@@ -1,0 +1,15 @@
+- name: Create task to run init_tbf_client.py on boot
+  win_scheduled_task:
+    name: RunInitTbfClient
+    description: Run the init_tbf_client.py script on log on of user setup
+    actions:
+    - path: C:\Python37\python.exe
+      arguments: C:\\BREACH\init_tbf_client.py
+      working_directory: C:\\BREACH
+    triggers:
+    - type: logon
+      user_id: setup
+    enabled: yes
+    hidden: no
+    run_level: highest
+    user: setup

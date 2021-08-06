@@ -1,0 +1,29 @@
+---
+# Ansible playbook for the Windows 10 client
+# Run the playbook using ` ansible-playbook client10_playbook.yml -i hosts `
+
+- hosts: client
+  gather_facts: true
+  
+  vars:
+   
+  roles:
+    - win10_setup_user
+    - win_disable_uac
+    - win10_add_exclusion_folder
+    - win10_disable_firewall
+    - win10_disable_screen_lock
+    - win10_python
+    - win10_assets
+    - win10_firefox
+    - win10_disable_automatic_updates
+    - win10_run_init_tbf_client_on_boot
+    - win10_install_ssh_server
+    - win10_disable_ipv6
+    - win10_set_autostart
+    - win10_imdisk
+    - win10_logging_config
+    - win10_sysmon
+    - win10_winlogbeat
+    - win10_disable_defender
+    

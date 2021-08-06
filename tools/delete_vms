@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+VM_NAMES=(
+	"Internet Router"
+	"Company Router"
+	"Attacker"
+	"Log Server"
+	"DMZ Server"
+	"Internal Server"
+	"Client"
+)
+
+echo "Deleting all SOCBED VMs..."
+for VMNAME in "${VM_NAMES[@]}"; do
+	if vboxmanage unregistervm --delete "$VMNAME" > /dev/null 2>&1; then
+		echo "$VMNAME successfully deleted"
+	else
+		echo "Cannot delete $VMNAME: VM doesn't exist"
+	fi
+done
+echo "Done."

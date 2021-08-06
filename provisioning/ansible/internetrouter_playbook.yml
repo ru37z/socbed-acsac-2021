@@ -1,0 +1,9 @@
+---
+- hosts: internetrouter
+  become: yes
+  gather_facts: true
+
+  roles:
+    - internet_router_configuration
+    - rsyslog_install_ipfire
+    - rsyslog_ISO8601

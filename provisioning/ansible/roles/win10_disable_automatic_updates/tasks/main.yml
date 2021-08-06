@@ -1,0 +1,6 @@
+- name: Disable automatic Updates
+  win_regedit:
+    path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+    name: NoAutoUpdate
+    type: dword
+    data: 1
