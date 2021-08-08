@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+NUM_ITERATIONS=1
+
+epoch () { date "+%s"; }
+#isotime () { date -u -d @$1 "+%Y-%m-%dT%H:%M:%SZ"; }
+isotime () { date -ur $1 "+%Y-%m-%dT%H:%M:%SZ"; } # variant for macOS
+isonow () { date -u "+%Y-%m-%dT%H:%M:%SZ"; }
+
+for i in `seq 1 $NUM_ITERATIONS`; do
+	start=$(epoch)
+	end=$(( $start + 3600 ))
+
+	echo "$(isotime $start) Starting session $i..."
+	vmconsole -c start_session 2> "vmconsole_$i.log"
+
+	echo "$(isonow) Waiting until 15 minutes passed..."
+	sleep $(( $start + 900 - $(epoch) ))
+
+	echo "$(isonow) Running multi-step attack (pausing 3 minutes between steps)..."
+	step=1
+	for attack in misc_sqlmap infect_email_exe c2_take_screenshot c2_exfiltration c2_mimikatz misc_download_malware misc_set_autostart misc_execute_malware; do
+		echo -e "use $attack\nrun\nback" | attackconsole -l "attackconsole_$i.log" >> "attackconsole_$i.stdout"
+		sleep $(( $start + 900 + 180*$step - $(epoch) ))
+		step=$(( $step + 1 ))
+	done
+
+	echo "$(isonow) Waiting until 65 minutes passed..."
+	sleep $(( $start + 3600 + 300 - $(epoch) ))
+
+	echo "$(isonow) Downloading logs..."
+	./download_logs.py $(isotime $start) $(isotime $end) $i
+
+	echo "$(isonow) Closing session..."
+	vmconsole -c close_session 2>> "vmconsole_$i.log"
+
+	echo "$(isonow) Done."
+done
