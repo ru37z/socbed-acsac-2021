@@ -91,14 +91,17 @@ source ~/.virtualenvs/socbed/bin/activate # Activate virtual environment
 pip install -r requirements.txt
 ```
 
-To run all tests (unit and system), simply run
+Run all unit tests from the repository root directory:
 ```sh
-tox
+tox -- -m "not systest"
 ```
-in the repository root directory.
 
-Attention: The system tests will start and stop the virtual machines of the framework several times and will take up to an hour to complete!
-Take a look at `tox.ini` to find out more about testing options, e.g., how to skip very long tests with `tox -- -m "not longtest"`.
+If they succeed, run the essential system tests:
+```sh
+tox -- -m "systest and not longtest"
+```
+
+Attention: System tests will start and stop the virtual machines several times and  can take a while to complete!
 
 ## Example
 
