@@ -15,4 +15,4 @@ echo "ENABLE_SAFE_SEARCH=off" >> /var/ipfire/dns/settings
 /etc/init.d/unbound restart
 
 pakfire update
-pakfire install python-distutils -y
+pakfire install python3-setuptools -y
