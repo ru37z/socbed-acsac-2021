@@ -33,13 +33,13 @@ Number of VMs to build doesn't match number of available build scripts. Exiting.
 	exit 1
 fi
 
-for ((i = 0; i < ${#VM_NAMES[@]}; i++)); do
-	printf "\e[1;4mTask $(($i+1))/$TASK_QTY: ${VM_NAMES[$i]} build\e[0m\n"
-	if ! vboxmanage showvminfo "${VM_NAMES[$i]}" > /dev/null 2>&1;then
-		CMD="source ./tools/${SCRIPT_NAMES[$i]}"
+for ((count = 0; count < ${#VM_NAMES[@]}; count++)); do
+	printf "\e[1;4mTask $(($count+1))/$TASK_QTY: ${VM_NAMES[$count]} build\e[0m\n"
+	if ! vboxmanage showvminfo "${VM_NAMES[$count]}" > /dev/null 2>&1;then
+		CMD="source ./tools/${SCRIPT_NAMES[$count]}"
 		eval $CMD
 	else
-		printf "${VM_NAMES[$i]} already exists. Skipping task.\n\n"
+		printf "${VM_NAMES[$count]} already exists. Skipping task.\n\n"
 	fi
 done
 
