@@ -16,7 +16,7 @@ The levels build on each other, starting with the least effort:
 Please note that a full reproduction of the evaluation (level three) is very time-consuming and requires two separate host systems:
 Each iteration of our simulation takes around 70 minutes, resulting in around 24 hours of simulation time per host.
 Building the VMs requires an additional 3-5 hours (depending on host and internet speed) and is required twice per host.
-We therefore propose to limit the reproduction to level two and only run a few simulation iterations, whose results can then be compared to our dataset.
+If time is limited, we therefore propose to limit the reproduction to level two and only run a few simulation iterations, whose results can then be compared to our dataset.
 However, we provide all necessary instructions for a full reproduction in case this is feasible.
 
 In the following, we describe how to perform the three levels of reproduction.
@@ -24,7 +24,8 @@ In the following, we describe how to perform the three levels of reproduction.
 ## Recalculating the presented results from our dataset
 
 Our main results are presented in Table 2 (page 8) and Figure 5 (page 9) of the paper.
-They are based on the measurements contained in `dataset.zip`. Unzip with, e.g. `unzip dataset.zip -d dataset`.
+They are based on the measurements contained in `dataset.zip`.
+Unzip with, e.g., `unzip dataset.zip -d dataset`.
 Each directory in this archive contains all relevant log data from ten simulation runs, respectively.
 For the reproduction of results, we only require the Sigma alerts (`sigma_##.jsonl`), Suricata alerts (`syslog_##.jsonl`), and the Windows Event logs (`winlogbeat_##.jsonl`).
 
@@ -67,6 +68,7 @@ The results are shown in Events.pdf.
 
 For our evaluation, we built and run SOCBED on two separate host systems with two different logging configurations (default and best-practice), respectively.
 To begin with, this section describes how to build and run SOCBED on one host with the best-practice configuration.
+Please note that SOCBED used to be called "BREACH" and the old name is not yet fully replaced in the code.
 
 ### Building SOCBED
 
@@ -81,7 +83,7 @@ You can use the following image, which we uploaded to Google Drive: https://driv
 ### Running an iteration of our simulation
 
 After installing SOCBED successfully, you can run an iteration of our simulation as follows.
-Please note that for macOS you need to replace line 6 with line 7 in the `run_simulations` script:
+(In case you are running macOS as a host system, you first need to replace line 6 with line 7 in the `run_simulations` script.)
 
 ```sh
 cd evaluation
