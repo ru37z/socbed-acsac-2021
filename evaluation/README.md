@@ -78,7 +78,8 @@ You can use the following image, which we uploaded to Google Drive: https://driv
 
 ### Running an iteration of our simulation
 
-After installing SOCBED successfully, you can run an iteration of our simulation as follows:
+After installing SOCBED successfully, you can run an iteration of our simulation as follows.
+Please note that for macOS you need to replace line 6 with line 7 in the `run_simulations` script:
 
 ```sh
 cd evaluation

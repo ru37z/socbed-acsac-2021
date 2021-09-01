@@ -3,8 +3,8 @@
 NUM_ITERATIONS=1
 
 epoch () { date "+%s"; }
-#isotime () { date -u -d @$1 "+%Y-%m-%dT%H:%M:%SZ"; }
-isotime () { date -ur $1 "+%Y-%m-%dT%H:%M:%SZ"; } # variant for macOS
+isotime () { date -u -d @$1 "+%Y-%m-%dT%H:%M:%SZ"; }
+#isotime () { date -ur $1 "+%Y-%m-%dT%H:%M:%SZ"; } # variant for macOS
 isonow () { date -u "+%Y-%m-%dT%H:%M:%SZ"; }
 
 for i in `seq 1 $NUM_ITERATIONS`; do
