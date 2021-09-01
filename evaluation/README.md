@@ -19,7 +19,20 @@ Building the VMs requires an additional 3-5 hours (depending on host and interne
 If time is limited, we therefore propose to limit the reproduction to level two and only run a few simulation iterations, whose results can then be compared to our dataset.
 However, we provide all necessary instructions for a full reproduction in case this is feasible.
 
-In the following, we describe how to perform the three levels of reproduction.
+In the following, we state system requirements and describe how to perform the three levels of reproduction.
+
+## System requirements
+
+Reproducing the full evaluation requires two systems as follows (for level one and two, one system suffices):
+
+* Physical host running Ubuntu 20.04 (recommended) or macOS 10.15
+* 16 GB RAM (32 GB recommended)
+* SSD with 50 GB free space
+
+Our evaluation was performed on two notebook computers (Dell Latitude 5501 running Ubuntu 20.04 and MacBook Pro 15" Mid 2015 running macOS 10.15), each equipped with an Intel Core i7 CPU, 16 GB of RAM, and an SSD.
+Similar operating systems should work as well but were not tested.
+When running on a system with 16 GB RAM, all other applications should be closed.
+We experienced some minor VirtualBox bugs on macOS and therefore recommend using Ubuntu.
 
 ## Recalculating the presented results from our dataset
 
