@@ -24,7 +24,7 @@ In the following, we describe how to perform the three levels of reproduction.
 ## Recalculating the presented results from our dataset
 
 Our main results are presented in Table 2 (page 8) and Figure 5 (page 9) of the paper.
-They are based on the measurements contained in `dataset.zip`.
+They are based on the measurements contained in `dataset.zip`. Unzip with, e.g. `unzip dataset.zip -d dataset`.
 Each directory in this archive contains all relevant log data from ten simulation runs, respectively.
 For the reproduction of results, we only require the Sigma alerts (`sigma_##.jsonl`), Suricata alerts (`syslog_##.jsonl`), and the Windows Event logs (`winlogbeat_##.jsonl`).
 
@@ -34,7 +34,7 @@ The means and standard deviations were calculated using the LibreOffice spreadsh
 You can find all values of Table 2 in columns AP-AW of the tab "Iterations Used for Evaluation".
 
 All measurements for the 40 iterations (columns B-AO) can be recalculated from the dataset using Python 3 scripts.
-To recalculate the number of Sigma alerts (line 8-12) execute the following command in a shell (such as Bash):
+To recalculate the number of Sigma alerts (line 8-12) execute the following command in a shell (such as Bash) in the evaluation directory:
 
 ```sh
 find dataset -name 'sigma_??.jsonl' -exec python3 count_tps_sigma.py {} \;
@@ -61,6 +61,8 @@ python3 boxplot.py dataset/
 deactivate
 ```
 
+The results are shown in Events.pdf.
+
 ## Reproducing one type of simulation
 
 For our evaluation, we built and run SOCBED on two separate host systems with two different logging configurations (default and best-practice), respectively.
@@ -78,7 +80,8 @@ You can use the following image, which we uploaded to Google Drive: https://driv
 
 ### Running an iteration of our simulation
 
-After installing SOCBED successfully, you can run an iteration of our simulation as follows:
+After installing SOCBED successfully, you can run an iteration of our simulation as follows.
+Please note that for macOS you need to replace line 6 with line 7 in the `run_simulations` script:
 
 ```sh
 cd evaluation
