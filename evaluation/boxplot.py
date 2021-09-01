@@ -78,7 +78,7 @@ def main():
     plot.legend(loc='upper right')
     plot.subplots_adjust(bottom=0.17)
 
-    # plot.savefig('Events.pdf')
+    plot.savefig('Events.pdf')
     plot.show()
 
 
