@@ -1,0 +1,13 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4657 AND winlog.event_data.ObjectName:
+  "*\SOFTWARE\Microsoft\.NETFramework" AND winlog.event_data.ObjectValueName: "ETWEnabled"
+  AND NewValue: "0"'
+pre_detector:
+  case_condition: directly
+  id: a4c90ea1-2634-4ca0-adbb-35eae169b6fc
+  mitre:
+  - attack.defense_evasion
+  - attack.t1112
+  severity: critical
+  title: COMPlus_ETWEnabled Registry Modification
+sigma_fields: true
+description: Potential adversaries stopping ETW providers recording loaded .NET assemblies.

@@ -1,0 +1,14 @@
+filter: 'winlog.event_id: 4104 AND ScriptBlockText: "*Start-Dnscat2*"'
+pre_detector:
+  case_condition: directly
+  id: a6d67db4-6220-436d-8afc-f3842fe05d43
+  mitre:
+  - attack.exfiltration
+  - attack.t1048
+  - attack.execution
+  - attack.t1059.001
+  - attack.t1086
+  severity: critical
+  title: Dnscat Execution
+sigma_fields: true
+description: Dnscat exfiltration tool execution

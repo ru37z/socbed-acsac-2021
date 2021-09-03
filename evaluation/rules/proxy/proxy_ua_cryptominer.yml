@@ -1,0 +1,12 @@
+filter: 'c-useragent: ("XMRig *" OR "ccminer*")'
+pre_detector:
+  case_condition: directly
+  id: fa935401-513b-467b-81f4-f9e77aa0dd78
+  mitre:
+  - attack.command_and_control
+  - attack.t1071.001
+  severity: high
+  title: Crypto Miner User Agent
+sigma_fields: true
+description: Detects suspicious user agent strings used by crypto miners in proxy
+  logs

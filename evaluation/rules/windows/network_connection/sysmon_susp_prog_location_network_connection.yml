@@ -1,0 +1,13 @@
+filter: 'process.executable: ("*\$Recycle.bin" OR "*\Users\All Users\\*" OR "*\Users\Default\\*"
+  OR "*\Users\Public\\*" OR "*\Users\Contacts\\*" OR "*\Users\Searches\\*" OR "C:\Perflogs\\*"
+  OR "*\config\systemprofile\\*" OR "*\Windows\Fonts\\*" OR "*\Windows\IME\\*" OR
+  "*\Windows\addins\\*")'
+pre_detector:
+  case_condition: directly
+  id: 7b434893-c57d-4f41-908d-6a17bf1ae98f
+  mitre: []
+  severity: high
+  title: Suspicious Program Location with Network Connections
+sigma_fields: true
+description: Detects programs with network connections running in suspicious files
+  system locations

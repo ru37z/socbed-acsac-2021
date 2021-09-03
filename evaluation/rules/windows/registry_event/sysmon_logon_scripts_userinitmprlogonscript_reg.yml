@@ -1,0 +1,13 @@
+filter: 'winlog.event_data.TargetObject: "*UserInitMprLogonScript*"'
+pre_detector:
+  case_condition: directly
+  id: 9ace0707-b560-49b8-b6ca-5148b42f39fb
+  mitre:
+  - attack.t1037
+  - attack.t1037.001
+  - attack.persistence
+  - attack.lateral_movement
+  severity: high
+  title: Logon Scripts (UserInitMprLogonScript) Registry
+sigma_fields: true
+description: Detects creation or execution of UserInitMprLogonScript persistence method

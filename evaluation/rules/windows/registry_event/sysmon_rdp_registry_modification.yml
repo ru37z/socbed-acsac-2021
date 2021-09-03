@@ -1,0 +1,14 @@
+filter: 'winlog.event_data.TargetObject: ("*\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\UserAuthentication"
+  OR "*\CurrentControlSet\Control\Terminal Server\fDenyTSConnections") AND winlog.event_data.Details:
+  "DWORD (0x00000000)"'
+pre_detector:
+  case_condition: directly
+  id: 41904ebe-d56c-4904-b9ad-7a77bdf154b3
+  mitre:
+  - attack.defense_evasion
+  - attack.t1112
+  severity: high
+  title: RDP Registry Modification
+sigma_fields: true
+description: Detects potential malicious modification of the property value of fDenyTSConnections
+  and UserAuthentication to enable remote desktop connections.

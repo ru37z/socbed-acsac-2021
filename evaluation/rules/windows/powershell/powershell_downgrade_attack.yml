@@ -1,0 +1,15 @@
+filter: 'winlog.event_id: 400 AND winlog.event_data.EngineVersion: "2.*" AND NOT winlog.event_data.HostVersion:
+  "2.*"'
+pre_detector:
+  case_condition: directly
+  id: 6331d09b-4785-4c13-980f-f96661356249
+  mitre:
+  - attack.defense_evasion
+  - attack.execution
+  - attack.t1059.001
+  - attack.t1086
+  severity: medium
+  title: PowerShell Downgrade Attack
+sigma_fields: true
+description: Detects PowerShell downgrade attack by comparing the host versions with
+  the actually used engine version 2.0

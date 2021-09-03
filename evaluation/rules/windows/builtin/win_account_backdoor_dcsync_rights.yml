@@ -1,0 +1,15 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5136 AND LDAPDisplayName:
+  "ntSecurityDescriptor" AND Value: ("*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*" OR "*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*"
+  OR "*89e95b76-444d-4c62-991a-0facbeda640c*")'
+pre_detector:
+  case_condition: directly
+  id: 2c99737c-585d-4431-b61a-c911d86ff32f
+  mitre:
+  - attack.persistence
+  - attack.t1098
+  severity: critical
+  title: Powerview Add-DomainObjectAcl DCSync AD Extend Right
+sigma_fields: true
+description: backdooring domain object to grant the rights associated with DCSync
+  to a regular user or machine account using Powerview\Add-DomainObjectAcl DCSync
+  Extended Right cmdlet, will allow to re-obtain the pwd hashes of any user/computer

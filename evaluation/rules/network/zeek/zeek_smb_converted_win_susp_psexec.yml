@@ -1,0 +1,15 @@
+filter: 'path: "\\*\IPC$" AND name: ("*-stdin" OR "*-stdout" OR "*-stderr") AND NOT
+  (name: "\\*\IPC$" AND path: "PSEXESVC*")'
+pre_detector:
+  case_condition: directly
+  id: f1b3a22a-45e6-4004-afb5-4291f9c21166
+  mitre:
+  - attack.lateral_movement
+  - attack.t1077
+  - attack.t1021.002
+  severity: high
+  title: Suspicious PsExec Execution - Zeek
+sigma_fields: true
+description: detects execution of psexec or paexec with renamed service name, this
+  rule helps to filter out the noise if psexec is used for legit purposes or if attacker
+  uses a different psexec client other than sysinternal one

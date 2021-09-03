@@ -1,0 +1,13 @@
+filter: 'type: "EXECVE" AND a0: ("users" OR "w" OR "who")'
+pre_detector:
+  case_condition: directly
+  id: 9a0d8ca0-2385-4020-b6c6-cb6153ca56f3
+  mitre:
+  - attack.discovery
+  - attack.t1033
+  severity: low
+  title: System Owner or User Discovery
+sigma_fields: true
+description: Adversaries may use the information from System Owner/User Discovery
+  during automated discovery to shape follow-on behaviors, including whether or not
+  the adversary fully infects the target and/or attempts specific actions.

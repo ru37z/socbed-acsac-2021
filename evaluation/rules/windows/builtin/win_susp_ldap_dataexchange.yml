@@ -1,0 +1,16 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5136 AND AttributeValue:
+  "*" AND winlog.event_data.AttributeLDAPDisplayName: ("primaryInternationalISDNNumber"
+  OR "otherFacsimileTelephoneNumber" OR "primaryTelexNumber")'
+pre_detector:
+  case_condition: directly
+  id: d00a9a72-2c09-4459-ad03-5e0a23351e36
+  mitre:
+  - attack.t1071
+  - attack.t1001.003
+  - attack.command_and_control
+  severity: high
+  title: Suspicious LDAP-Attributes Used
+sigma_fields: true
+description: Detects the usage of particular AttributeLDAPDisplayNames, which are
+  known for data exchange via LDAP by the tool LDAPFragger and are additionally not
+  commonly used in companies.

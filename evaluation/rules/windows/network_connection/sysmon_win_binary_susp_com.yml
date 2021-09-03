@@ -1,0 +1,12 @@
+filter: 'Initiated: "true" AND destination.domain: ("*dl.dropboxusercontent.com" OR
+  "*.pastebin.com" OR "*.githubusercontent.com") AND process.executable: "C:\Windows\\*"'
+pre_detector:
+  case_condition: directly
+  id: e0f8ab85-0ac9-423b-a73a-81b3c7b1aa97
+  mitre:
+  - attack.lateral_movement
+  - attack.t1105
+  severity: high
+  title: Microsoft Binary Suspicious Communication Endpoint
+sigma_fields: true
+description: Detects an executable in the Windows folder accessing suspicious domains

@@ -1,0 +1,11 @@
+filter: 'type: "EXECVE" AND a0: ("*chmod*" OR "*chown*")'
+pre_detector:
+  case_condition: directly
+  id: 74c01ace-0152-4094-8ae2-6fd776dd43e5
+  mitre:
+  - attack.defense_evasion
+  - attack.t1222.002
+  severity: low
+  title: File or Folder Permissions Change
+sigma_fields: true
+description: Detects file and folder permission changes

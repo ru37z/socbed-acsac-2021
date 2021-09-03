@@ -1,0 +1,15 @@
+filter: 'file.path: ("*\System.Management.Automation.Dll" OR "*\System.Management.Automation.ni.Dll")
+  AND NOT process.executable: ("*\powershell.exe" OR "*\powershell_ise.exe" OR "*\WINDOWS\System32\sdiagnhost.exe"
+  OR "*\mscorsvw.exe" OR "*\WINDOWS\System32\RemoteFXvGPUDisablement.exe")'
+pre_detector:
+  case_condition: directly
+  id: 092bc4b9-3d1d-43b4-a6b4-8c8acd83522f
+  mitre:
+  - attack.t1086
+  - attack.t1059.001
+  - attack.execution
+  severity: high
+  title: In-memory PowerShell
+sigma_fields: true
+description: Detects loading of essential DLL used by PowerShell, but not by the process
+  powershell.exe. Detects meterpreter's "load powershell" extension.

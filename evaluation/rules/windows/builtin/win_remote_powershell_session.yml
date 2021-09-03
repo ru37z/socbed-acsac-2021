@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5156 AND DestPort: (5985
+  OR 5986) AND LayerRTID: 44'
+pre_detector:
+  case_condition: directly
+  id: 13acf386-b8c6-4fe0-9a6e-c4756b974698
+  mitre:
+  - attack.execution
+  - attack.t1086
+  - attack.t1059.001
+  severity: high
+  title: Remote PowerShell Sessions
+sigma_fields: true
+description: Detects basic PowerShell Remoting by monitoring for network inbound connections
+  to ports 5985 OR 5986

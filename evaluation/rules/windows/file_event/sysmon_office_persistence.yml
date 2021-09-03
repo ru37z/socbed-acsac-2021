@@ -1,0 +1,15 @@
+filter: '((file.path: "*\Microsoft\Word\Startup\\*" AND file.path: "*.wll") OR (file.path:
+  "*\Microsoft\Excel\Startup\\*" AND file.path: "*.xll")) OR (file.path: "*\Microsoft\Addins\\*"
+  AND file.path: ("*.xlam" OR "*.xla"))'
+pre_detector:
+  case_condition: directly
+  id: 8e1cb247-6cf6-42fa-b440-3f27d57e9936
+  mitre:
+  - attack.persistence
+  - attack.t1137
+  - attack.t1137.006
+  severity: high
+  title: Microsoft Office Add-In Loading
+sigma_fields: true
+description: Detects add-ins that load when Microsoft Word or Excel starts (.wll/.xll
+  are simply .dll fit for Word or Excel).

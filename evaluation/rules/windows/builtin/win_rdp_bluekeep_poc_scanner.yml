@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4625 AND winlog.event_data.AccountName:
+  "AAAAAAA"'
+pre_detector:
+  case_condition: directly
+  id: 8400629e-79a9-4737-b387-5db940ab2367
+  mitre:
+  - attack.lateral_movement
+  - attack.t1210
+  - car.2013-07-002
+  severity: critical
+  title: Scanner PoC for CVE-2019-0708 RDP RCE Vuln
+sigma_fields: true
+description: Detects the use of a scanner by zerosum0x0 that discovers targets vulnerable
+  to  CVE-2019-0708 RDP RCE aka BlueKeep

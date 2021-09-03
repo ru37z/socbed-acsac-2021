@@ -1,0 +1,13 @@
+filter: 'process.executable: ("*\winword.exe" OR "*\powerpnt.exe" OR "*\excel.exe"
+  OR "*\outlook.exe") AND file.path: "C:\Windows\assembly\\*"'
+pre_detector:
+  case_condition: directly
+  id: ff0f2b05-09db-4095-b96d-1b75ca24894a
+  mitre:
+  - attack.execution
+  - attack.t1204
+  - attack.t1204.002
+  severity: high
+  title: dotNET DLL Loaded Via Office Applications
+sigma_fields: true
+description: Detects any assembly DLL being loaded by an Office Product

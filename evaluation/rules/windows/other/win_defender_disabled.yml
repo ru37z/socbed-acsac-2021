@@ -1,0 +1,15 @@
+filter: 'winlog.channel: "Microsoft-Windows-Windows Defender/Operational" AND (winlog.event_id:
+  (5001 OR 5010 OR 5012 OR 5101) OR (winlog.event_data.TargetObject: ("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend"
+  OR "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender" OR "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows
+  Defender") AND winlog.event_data.Details: "DWORD (0x00000001)"))'
+pre_detector:
+  case_condition: directly
+  id: fe34868f-6e0e-4882-81f6-c43aa8f15b62
+  mitre:
+  - attack.defense_evasion
+  - attack.t1089
+  - attack.t1562.001
+  severity: high
+  title: Windows Defender Threat Detection Disabled
+sigma_fields: true
+description: Detects disabling Windows Defender threat protection

@@ -1,0 +1,16 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4720 AND SAMAccountName:
+  "*ANONYMOUS*LOGON*"'
+pre_detector:
+  case_condition: directly
+  id: 1bbf25b9-8038-4154-a50b-118f2a32be27
+  mitre:
+  - attack.persistence
+  - attack.t1136
+  - attack.t1136.001
+  - attack.t1136.002
+  severity: high
+  title: Suspicious Windows ANONYMOUS LOGON Local Account Created
+sigma_fields: true
+description: Detects the creation of suspicious accounts simliar to ANONYMOUS LOGON,
+  such as using additional spaces. Created as an covering detection for exclusion
+  of Logon Type 3 from ANONYMOUS LOGON accounts.

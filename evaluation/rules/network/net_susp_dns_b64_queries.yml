@@ -1,0 +1,15 @@
+filter: 'query: "*==.*"'
+pre_detector:
+  case_condition: directly
+  id: 4153a907-2451-4e4f-a578-c52bb6881432
+  mitre:
+  - attack.exfiltration
+  - attack.t1048
+  - attack.t1048.003
+  - attack.command_and_control
+  - attack.t1071
+  - attack.t1071.004
+  severity: medium
+  title: Suspicious DNS Query with B64 Encoded String
+sigma_fields: true
+description: Detects suspicious DNS queries using base64 encoding

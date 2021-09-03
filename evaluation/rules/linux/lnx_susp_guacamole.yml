@@ -1,0 +1,9 @@
+filter: 'message: "(2 users now present)"'
+pre_detector:
+  case_condition: directly
+  id: 1edd77db-0669-4fef-9598-165bda82826d
+  mitre: []
+  severity: high
+  title: Guacamole Two Users Sharing Session Anomaly
+sigma_fields: true
+description: Detects suspicious session with two users present

@@ -1,0 +1,17 @@
+filter: '(((file.path: "*\inetpub\wwwroot\\*" AND file.path: ("*.asp*" OR "*.ashx*"
+  OR "*.ph*")) AND NOT (file.path: ("*\AppData\Local\Temp\\*" OR "*\Windows\Temp\\*")))
+  OR ((file.path: ("*\www\\*" OR "*\htdocs\\*" OR "*\html\\*") AND file.path: "*.ph*")
+  AND NOT (file.path: ("*\AppData\Local\Temp\\*" OR "*\Windows\Temp\\*")))) OR ((file.path:
+  "*.jsp" OR (file.path: "*\cgi-bin\\*" AND file.path: "*.pl*")) AND NOT (file.path:
+  ("*\AppData\Local\Temp\\*" OR "*\Windows\Temp\\*")))'
+pre_detector:
+  case_condition: directly
+  id: 39f1f9f2-9636-45de-98f6-a4046aa8e4b9
+  mitre:
+  - attack.persistence
+  - attack.t1100
+  - attack.t1505.003
+  severity: critical
+  title: Windows Webshell Creation
+sigma_fields: true
+description: Possible webshell file creation on a static web site

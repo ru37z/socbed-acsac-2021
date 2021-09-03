@@ -1,0 +1,19 @@
+filter: 'c-uri-extension: ("exe" OR "vbs" OR "bat" OR "rar" OR "ps1" OR "doc" OR "docm"
+  OR "xls" OR "xlsm" OR "pptm" OR "rtf" OR "hta" OR "dll" OR "ws" OR "wsf" OR "sct"
+  OR "zip") AND NOT r-dns: ("*.com" OR "*.org" OR "*.net" OR "*.edu" OR "*.gov" OR
+  "*.uk" OR "*.ca" OR "*.de" OR "*.jp" OR "*.fr" OR "*.au" OR "*.us" OR "*.ch" OR
+  "*.it" OR "*.nl" OR "*.se" OR "*.no" OR "*.es")'
+pre_detector:
+  case_condition: directly
+  id: b5de2919-b74a-4805-91a7-5049accbaefe
+  mitre:
+  - attack.initial_access
+  - attack.t1566
+  - attack.execution
+  - attack.t1203
+  - attack.t1204.002
+  - attack.t1204
+  severity: low
+  title: Download EXE from Suspicious TLD
+sigma_fields: true
+description: Detects executable downloads from suspicious remote systems

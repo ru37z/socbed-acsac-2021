@@ -1,0 +1,29 @@
+filter: 'winlog.event_data.TargetObject: "HKU\\*\mscfile\shell\open\command"'
+pre_detector:
+  case_condition: directly
+  id: 7c81fec3-1c1d-43b0-996a-46753041b1b6
+  mitre:
+  - attack.defense_evasion
+  - attack.privilege_escalation
+  - attack.t1088
+  - attack.t1548.002
+  - car.2019-04-001
+  severity: critical
+  title: UAC Bypass via Event Viewer
+sigma_fields: true
+description: Detects UAC bypass method using Windows event viewer
+---
+filter: 'process.parent.executable: "*\eventvwr.exe" AND NOT process.executable: "*\mmc.exe"'
+pre_detector:
+  case_condition: directly
+  id: 7c81fec3-1c1d-43b0-996a-46753041b1b6
+  mitre:
+  - attack.defense_evasion
+  - attack.privilege_escalation
+  - attack.t1088
+  - attack.t1548.002
+  - car.2019-04-001
+  severity: critical
+  title: UAC Bypass via Event Viewer
+sigma_fields: true
+description: Detects UAC bypass method using Windows event viewer

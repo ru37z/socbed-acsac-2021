@@ -1,0 +1,12 @@
+filter: 'type: "PATH" AND name: ("/etc/syslog.conf" OR "/etc/rsyslog.conf" OR "/etc/syslog-ng/syslog-ng.conf")'
+pre_detector:
+  case_condition: directly
+  id: c830f15d-6f6e-430f-8074-6f73d6807841
+  mitre:
+  - attack.defense_evasion
+  - attack.t1054
+  - attack.t1562.006
+  severity: high
+  title: Logging Configuration Changes on Linux Host
+sigma_fields: true
+description: Detect changes of syslog daemons configuration files

@@ -1,0 +1,15 @@
+filter: 'winlog.event_id: 4104 AND Message: "*New-LocalUser*"'
+pre_detector:
+  case_condition: directly
+  id: 243de76f-4725-4f2e-8225-a8a69b15ad61
+  mitre:
+  - attack.execution
+  - attack.t1059.001
+  - attack.t1086
+  - attack.persistence
+  - attack.t1136.001
+  - attack.t1136
+  severity: medium
+  title: PowerShell Create Local User
+sigma_fields: true
+description: Detects creation of a local user via PowerShell

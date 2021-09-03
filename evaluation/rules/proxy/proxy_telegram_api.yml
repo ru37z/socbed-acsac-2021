@@ -1,0 +1,16 @@
+filter: 'r-dns: "api.telegram.org" AND NOT c-useragent: ("*Telegram*" OR "*Bot*")'
+pre_detector:
+  case_condition: directly
+  id: b494b165-6634-483d-8c47-2026a6c52372
+  mitre:
+  - attack.defense_evasion
+  - attack.command_and_control
+  - attack.t1071.001
+  - attack.t1043
+  - attack.t1102.002
+  - attack.t1102
+  severity: medium
+  title: Telegram API Access
+sigma_fields: true
+description: Detects suspicious requests to Telegram API without the usual Telegram
+  User-Agent

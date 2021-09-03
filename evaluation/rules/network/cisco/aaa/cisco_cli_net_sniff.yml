@@ -1,0 +1,12 @@
+filter: '"monitor capture point" OR "set span" OR "set rspan"'
+pre_detector:
+  case_condition: directly
+  id: b9e1f193-d236-4451-aaae-2f3d2102120d
+  mitre:
+  - attack.credential_access
+  - attack.discovery
+  - attack.t1040
+  severity: medium
+  title: Cisco Sniffing
+sigma_fields: true
+description: Show when a monitor or a span/rspan is setup or modified

@@ -1,0 +1,16 @@
+filter: 'c-uri: "*/pwndrop/*"'
+pre_detector:
+  case_condition: directly
+  id: 2b1ee7e4-89b6-4739-b7bb-b811b6607e5e
+  mitre:
+  - attack.command_and_control
+  - attack.t1071.001
+  - attack.t1043
+  - attack.t1102.001
+  - attack.t1102.003
+  - attack.t1102
+  severity: critical
+  title: PwnDrp Access
+sigma_fields: true
+description: Detects downloads from PwnDrp web servers developed for red team testing
+  and most likely also used for criminal activity

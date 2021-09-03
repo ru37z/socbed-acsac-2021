@@ -1,0 +1,13 @@
+filter: 'winlog.event_data.TargetObject: "*TrustRecords*"'
+pre_detector:
+  case_condition: directly
+  id: 295a59c1-7b79-4b47-a930-df12c15fc9c2
+  mitre:
+  - attack.initial_access
+  - attack.t1193
+  - attack.t1566.001
+  severity: medium
+  title: Windows Registry Trust Record Modification
+sigma_fields: true
+description: Alerts on trust record modification within the registry, indicating usage
+  of macros

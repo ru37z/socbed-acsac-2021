@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4720'
+pre_detector:
+  case_condition: directly
+  id: 66b6be3d-55d0-4f47-9855-d69df21740ea
+  mitre:
+  - attack.persistence
+  - attack.t1136
+  - attack.t1136.001
+  severity: low
+  title: Local User Creation
+sigma_fields: true
+description: Detects local user creation on windows servers, which shouldn't happen
+  in an Active Directory environment. Apply this Sigma Use Case on your windows server
+  logs and not on your DC logs.

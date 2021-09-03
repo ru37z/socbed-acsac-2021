@@ -1,0 +1,13 @@
+filter: 'file.path: "*\Temp\\*"'
+pre_detector:
+  case_condition: directly
+  id: 2c4523d5-d481-4ed0-8ec3-7fbf0cb41a75
+  mitre:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1050
+  - attack.t1543.003
+  severity: medium
+  title: Suspicious Driver Load from Temp
+sigma_fields: true
+description: Detects a driver load from a temporary directory

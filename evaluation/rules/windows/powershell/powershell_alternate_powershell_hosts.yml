@@ -1,0 +1,14 @@
+filter: 'winlog.event_id: (4103 OR 400) AND ContextInfo: "*" AND NOT (ContextInfo:
+  "powershell.exe" OR Message: "powershell.exe")'
+pre_detector:
+  case_condition: directly
+  id: 64e8e417-c19a-475a-8d19-98ea705394cc
+  mitre:
+  - attack.execution
+  - attack.t1059.001
+  - attack.t1086
+  severity: medium
+  title: Alternate PowerShell Hosts
+sigma_fields: true
+description: Detects alternate PowerShell hosts potentially bypassing detections looking
+  for powershell.exe

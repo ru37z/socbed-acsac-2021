@@ -1,0 +1,15 @@
+filter: 'file.path: "*\Local\Microsoft\Windows\SchCache\\*.sch" AND NOT process.executable:
+  ("C:\windows\system32\svchost.exe" OR "C:\windows\system32\dllhost.exe" OR "C:\windows\system32\mmc.exe"
+  OR "C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe" OR "C:\Windows\CCM\CcmExec.exe")'
+pre_detector:
+  case_condition: directly
+  id: 75bf09fa-1dd7-4d18-9af9-dd9e492562eb
+  mitre:
+  - attack.t1071
+  - attack.t1001.003
+  - attack.command_and_control
+  severity: high
+  title: Suspicious ADSI-Cache Usage By Unknown Tool
+sigma_fields: true
+description: Detects the usage of ADSI (LDAP) operations by tools. This may also detect
+  tools like LDAPFragger.

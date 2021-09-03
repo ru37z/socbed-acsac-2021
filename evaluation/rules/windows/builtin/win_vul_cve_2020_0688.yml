@@ -1,0 +1,13 @@
+filter: 'winlog.channel: "Application" AND winlog.event_id: 4 AND winlog.event_data.Source:
+  "MSExchange Control Panel" AND Level: "Error" AND message: "*&__VIEWSTATE=*"'
+pre_detector:
+  case_condition: directly
+  id: d6266bf5-935e-4661-b477-78772735a7cb
+  mitre:
+  - attack.initial_access
+  - attack.t1190
+  severity: high
+  title: CVE-2020-0688 Exploitation via Eventlog
+sigma_fields: true
+description: Detects the exploitation of Microsoft Exchange vulnerability as described
+  in CVE-2020-0688

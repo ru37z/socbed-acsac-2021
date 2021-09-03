@@ -1,0 +1,12 @@
+filter: 'c-useragent: "* WindowsPowerShell/*"'
+pre_detector:
+  case_condition: directly
+  id: c8557060-9221-4448-8794-96320e6f3e74
+  mitre:
+  - attack.defense_evasion
+  - attack.command_and_control
+  - attack.t1071.001
+  severity: medium
+  title: Windows PowerShell User Agent
+sigma_fields: true
+description: Detects Windows PowerShell Web Access

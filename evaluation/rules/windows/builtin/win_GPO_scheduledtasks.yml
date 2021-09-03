@@ -1,0 +1,15 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5145 AND winlog.event_data.ShareName:
+  "\\*\SYSVOL" AND RelativeTargetName: "*ScheduledTasks.xml" AND Accesses: "*WriteData*"'
+pre_detector:
+  case_condition: directly
+  id: a8f29a7b-b137-4446-80a0-b804272f3da2
+  mitre:
+  - attack.persistence
+  - attack.lateral_movement
+  - attack.t1053
+  - attack.t1053.005
+  severity: high
+  title: Persistence and Execution at Scale via GPO Scheduled Task
+sigma_fields: true
+description: Detect lateral movement using GPO scheduled task, usually used to deploy
+  ransomware at scale

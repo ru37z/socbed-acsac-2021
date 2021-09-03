@@ -1,0 +1,12 @@
+filter: 'type: "PATH" AND name: ("/etc/audit/*" OR "/etc/libaudit.conf" OR "/etc/audisp/*")'
+pre_detector:
+  case_condition: directly
+  id: 977ef627-4539-4875-adf4-ed8f780c4922
+  mitre:
+  - attack.defense_evasion
+  - attack.t1054
+  - attack.t1562.006
+  severity: high
+  title: Auditing Configuration Changes on Linux Host
+sigma_fields: true
+description: Detect changes in auditd configuration files

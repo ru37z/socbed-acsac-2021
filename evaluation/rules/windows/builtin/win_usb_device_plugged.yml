@@ -1,0 +1,12 @@
+filter: 'winlog.channel: "Microsoft-Windows-DriverFrameworks-UserMode/Operational"
+  AND winlog.event_id: (2003 OR 2100 OR 2102)'
+pre_detector:
+  case_condition: directly
+  id: 1a4bd6e3-4c6e-405d-a9a3-53a116e341d4
+  mitre:
+  - attack.initial_access
+  - attack.t1200
+  severity: low
+  title: USB Device Plugged
+sigma_fields: true
+description: Detects plugged USB devices

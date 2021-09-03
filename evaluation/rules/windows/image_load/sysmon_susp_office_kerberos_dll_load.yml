@@ -1,0 +1,13 @@
+filter: 'process.executable: ("*\winword.exe" OR "*\powerpnt.exe" OR "*\excel.exe"
+  OR "*\outlook.exe") AND file.path: "*\kerberos.dll"'
+pre_detector:
+  case_condition: directly
+  id: 7417e29e-c2e7-4cf6-a2e8-767228c64837
+  mitre:
+  - attack.execution
+  - attack.t1204
+  - attack.t1204.002
+  severity: high
+  title: Active Directory Kerberos DLL Loaded Via Office Applications
+sigma_fields: true
+description: Detects Kerberos DLL being loaded by an Office Product

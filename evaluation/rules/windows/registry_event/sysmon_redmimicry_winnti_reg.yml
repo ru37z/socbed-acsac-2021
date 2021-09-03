@@ -1,0 +1,11 @@
+filter: 'winlog.event_data.TargetObject: "*HKLM\SOFTWARE\Microsoft\HTMLHelp\data*"'
+pre_detector:
+  case_condition: directly
+  id: 5b175490-b652-4b02-b1de-5b5b4083c5f8
+  mitre:
+  - attack.defense_evasion
+  - attack.t1112
+  severity: high
+  title: RedMimicry Winnti Playbook Registry Manipulation
+sigma_fields: true
+description: Detects actions caused by the RedMimicry Winnti playbook

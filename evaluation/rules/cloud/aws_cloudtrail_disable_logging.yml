@@ -1,0 +1,13 @@
+filter: 'eventSource: "cloudtrail.amazonaws.com" AND eventName: ("StopLogging" OR
+  "UpdateTrail" OR "DeleteTrail")'
+pre_detector:
+  case_condition: directly
+  id: 4db60cc0-36fb-42b7-9b58-a5b53019fb74
+  mitre:
+  - attack.defense_evasion
+  - attack.t1562.001
+  - attack.t1089
+  severity: medium
+  title: AWS CloudTrail Important Change
+sigma_fields: true
+description: Detects disabling, deleting and updating of a Trail

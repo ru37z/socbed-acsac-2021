@@ -1,0 +1,12 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5145 AND winlog.event_data.ShareName:
+  "\\*\IPC$" AND RelativeTargetName: ("*RemCom_stdint*" OR "*RemCom_stdoutt*" OR "*RemCom_stderrt*")'
+pre_detector:
+  case_condition: directly
+  id: 32d56ea1-417f-44ff-822b-882873f5f43b
+  mitre:
+  - attack.lateral_movement
+  - attack.t1021.002
+  severity: high
+  title: Impacket PsExec Execution
+sigma_fields: true
+description: Detects execution of Impacket's psexec.py.

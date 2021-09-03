@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: (4656 OR 4658 OR 4660 OR
+  4663) AND winlog.event_data.ObjectName: "*\wceaux.dll"'
+pre_detector:
+  case_condition: directly
+  id: 1de68c67-af5c-4097-9c85-fe5578e09e67
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.s0005
+  severity: critical
+  title: WCE wceaux.dll Access
+sigma_fields: true
+description: Detects wceaux.dll access while WCE pass-the-hash remote command execution
+  on source host

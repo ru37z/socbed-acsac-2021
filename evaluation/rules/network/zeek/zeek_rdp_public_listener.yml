@@ -1,0 +1,15 @@
+filter: 'NOT source.ip: ("192.168.*" OR "10.*" OR "172.16.*" OR "172.17.*" OR "172.18.*"
+  OR "172.19.*" OR "172.20.*" OR "172.21.*" OR "172.22.*" OR "172.23.*" OR "172.24.*"
+  OR "172.25.*" OR "172.26.*" OR "172.27.*" OR "172.28.*" OR "172.29.*" OR "172.30.*"
+  OR "172.31.*")'
+pre_detector:
+  case_condition: directly
+  id: 1fc0809e-06bf-4de3-ad52-25e5263b7623
+  mitre:
+  - attack.t1021
+  - attack.t1021.001
+  severity: high
+  title: Publicly Accessible RDP Service
+sigma_fields: true
+description: Detects connections from routable IPs to an RDP listener - which is indicative
+  of a publicly-accessible RDP service.

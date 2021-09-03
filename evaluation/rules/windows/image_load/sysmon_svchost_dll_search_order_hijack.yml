@@ -1,0 +1,20 @@
+filter: 'process.executable: "*\svchost.exe" AND file.path: ("*\tsmsisrv.dll" OR "*\tsvipsrv.dll"
+  OR "*\wlbsctrl.dll") AND NOT file.path: "C:\Windows\WinSxS\\*"'
+pre_detector:
+  case_condition: directly
+  id: 602a1f13-c640-4d73-b053-be9a2fa58b77
+  mitre:
+  - attack.persistence
+  - attack.defense_evasion
+  - attack.t1073
+  - attack.t1574.002
+  - attack.t1038
+  - attack.t1574.001
+  severity: high
+  title: Svchost DLL Search Order Hijack
+sigma_fields: true
+description: IKEEXT and SessionEnv service, as they call LoadLibrary on files that
+  do not exist within C:\Windows\System32\ by default. An attacker can place their
+  malicious logic within the PROCESS_ATTACH block of their library and restart the
+  aforementioned services "svchost.exe -k netsvcs" to gain code execution on a remote
+  machine.

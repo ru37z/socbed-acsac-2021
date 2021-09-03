@@ -1,0 +1,17 @@
+filter: '"tftp" OR "rcp" OR "puts" OR "copy" OR "configure replace" OR "archive tar"'
+pre_detector:
+  case_condition: directly
+  id: 5e51acb2-bcbe-435b-99c6-0e3cd5e2aa59
+  mitre:
+  - attack.collection
+  - attack.lateral_movement
+  - attack.command_and_control
+  - attack.exfiltration
+  - attack.t1074
+  - attack.t1105
+  - attack.t1002
+  - attack.t1560.001
+  severity: low
+  title: Cisco Stage Data
+sigma_fields: true
+description: Various protocols maybe used to put data on the device for exfil or infil

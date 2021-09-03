@@ -1,0 +1,12 @@
+filter: '"no logging" OR "no aaa new-model"'
+pre_detector:
+  case_condition: directly
+  id: 9e8f6035-88bf-4a63-96b6-b17c0508257e
+  mitre:
+  - attack.defense_evasion
+  - attack.t1089
+  - attack.t1562.001
+  severity: high
+  title: Cisco Disabling Logging
+sigma_fields: true
+description: Turn off logging locally or remote

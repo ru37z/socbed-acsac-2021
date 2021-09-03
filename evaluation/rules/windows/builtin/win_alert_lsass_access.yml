@@ -1,0 +1,12 @@
+filter: 'winlog.event_id: 1121 AND winlog.event_data.Path: "*\lsass.exe"'
+pre_detector:
+  case_condition: directly
+  id: a0a278fe-2c0e-4de2-ac3c-c68b08a9ba98
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.t1003.001
+  severity: high
+  title: LSASS Access Detected via Attack Surface Reduction
+sigma_fields: true
+description: Detects Access to LSASS Process

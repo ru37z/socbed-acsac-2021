@@ -1,0 +1,21 @@
+filter: 'winlog.event_data.TargetImage: "C:\windows\system32\lsass.exe" AND process.executable:
+  "C:\Windows\system32\wsmprovhost.exe"'
+pre_detector:
+  case_condition: directly
+  id: aa35a627-33fb-4d04-a165-d33b4afca3e8
+  mitre:
+  - attack.credential_access
+  - attack.execution
+  - attack.t1003.001
+  - attack.t1003
+  - attack.t1059.001
+  - attack.t1086
+  - attack.lateral_movement
+  - attack.t1021.006
+  - attack.t1028
+  - attack.s0002
+  severity: high
+  title: Mimikatz through Windows Remote Management
+sigma_fields: true
+description: Detects usage of mimikatz through WinRM protocol by monitoring access
+  to lsass process by wsmprovhost.exe.

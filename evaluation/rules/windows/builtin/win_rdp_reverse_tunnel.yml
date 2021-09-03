@@ -1,0 +1,21 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5156 AND ((source.port: 3389
+  AND DestinationAddress: ("127.*" OR "::1")) OR (destination.port: 3389 AND SourceAddress:
+  ("127.*" OR "::1")))'
+pre_detector:
+  case_condition: directly
+  id: 5bed80b6-b3e8-428e-a3ae-d3c757589e41
+  mitre:
+  - attack.defense_evasion
+  - attack.command_and_control
+  - attack.lateral_movement
+  - attack.t1076
+  - attack.t1090
+  - attack.t1090.001
+  - attack.t1090.002
+  - attack.t1021.001
+  - car.2013-07-002
+  severity: high
+  title: RDP over Reverse SSH Tunnel WFP
+sigma_fields: true
+description: Detects svchost hosting RDP termsvcs communicating with the loopback
+  address

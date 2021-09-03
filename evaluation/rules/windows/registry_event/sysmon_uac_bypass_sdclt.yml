@@ -1,0 +1,14 @@
+filter: 'winlog.event_data.TargetObject: "HKU\\*_Classes\exefile\shell\runas\command\isolatedCommand"'
+pre_detector:
+  case_condition: directly
+  id: 5b872a46-3b90-45c1-8419-f675db8053aa
+  mitre:
+  - attack.defense_evasion
+  - attack.privilege_escalation
+  - attack.t1088
+  - attack.t1548.002
+  - car.2019-04-001
+  severity: high
+  title: UAC Bypass via Sdclt
+sigma_fields: true
+description: Detects changes to HKCU:\Software\Classes\exefile\shell\runas\command\isolatedCommand
