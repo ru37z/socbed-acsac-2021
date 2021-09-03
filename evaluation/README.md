@@ -117,4 +117,4 @@ Our full evaluation differs from this description in the following aspects:
 1. We repeated the iterations with a changed Windows logging configuration. To do so, open `provisioning/ansible/client10_playbook.yml` and remove the roles `win10_logging_config` and `win10_sysmon`. This will change from the "best practice" to the "default" logging configuration. Then delete the client VM from VirtualBox and rebuilt it using the script `tools/build_client`.
 1. We repeated the whole process (i.e., ten iterations per configuration) on another host.
 
-Following these steps and then performing the calculations described in the section "Recalculating the presented results from our dataset" reproduces our complete evaluation.
+After each simulation, move the created log files to the corresponding directory (`new_dataset/host1_bestpractice/`, `new_dataset/host1_default/`, `new_dataset/host2_bestpractice/` and `new_dataset/host2_default/`). Following these steps and then performing the calculations described in the section "Recalculating the presented results from our dataset" using the new dataset reproduces our complete evaluation.
