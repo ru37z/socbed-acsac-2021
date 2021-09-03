@@ -28,6 +28,7 @@ Reproducing the full evaluation requires two systems as follows (for level one a
 * Physical host running Ubuntu 20.04 (recommended) or macOS 10.15
 * 16 GB RAM (32 GB recommended)
 * SSD with 50 GB free space
+* Direct Internet connection
 
 Our evaluation was performed on two notebook computers (Dell Latitude 5501 running Ubuntu 20.04 and MacBook Pro 15" Mid 2015 running macOS 10.15), each equipped with an Intel Core i7 CPU, 16 GB of RAM, and an SSD.
 Similar operating systems should work as well but were not tested.
@@ -80,13 +81,13 @@ The results are shown in Events.pdf.
 ## Reproducing one type of simulation
 
 For our evaluation, we built and run SOCBED on two separate host systems with two different logging configurations (default and best-practice), respectively.
-To begin with, this section describes how to build and run SOCBED on one host with the best-practice configuration.
-Please note that SOCBED used to be called "BREACH" and the old name is not yet fully replaced in the code.
+As a first step, this section describes how to build and run SOCBED on one host with the best-practice configuration.
 
 ### Building SOCBED
 
 The setup process is described in the file `README.md` in the repository root.
 Please build SOCBED by closely following these instructions and run the tests as described to verify correct functionality.
+Please note that SOCBED used to be called "BREACH" and the old name is not yet fully replaced in the code.
 
 Attention: SOCBED requires a Windows 10 ISO image, as described in the readme file.
 For the evaluation, we used Windows 10 Pro version 2004 (Build 19041).
@@ -107,19 +108,23 @@ pip install elasticsearch elasticsearch-dsl
 
 The simulation will take approx. 70 minutes.
 During the simulation and at the end, several log files will be created (in the same directory), including the Windows Event logs and Linux syslogs downloaded from the VMs.
-Sigma logs can be extracted from winlogbeat logs with `check_sigma.pex`, an executable using the open source [Logprep](https://github.com/fkie-cad/Logprep) project and the Sigma rules.
+
+To match Sigma rules against the created Windows Event logs, we used our open-source tool [Logprep](https://github.com/fkie-cad/Logprep), which is included here as a Python EXecutable (PEX) file called `check_sigma.pex`.
+Please note that this file requires Linux and Python 3.8 (default in Ubuntu 20.04) to run.
+Let us know if you are using a different OS or Python version, we will gladly recompile the file for you.
+
+We also included the Sigma rules used for the Evaluation in the `rules` directory.
+These rules were downloaded from the [official Sigma repository](https://github.com/SigmaHQ/sigma).
+Use the following command to create Sigma alerts from the Windows Event log file:
 
 ```
 ./check_sigma.pex winlogbeat_1.json rules/ > sigma_1.jsonl
 ```
 
-Now, Sigma and Suricate alerts can be extracted from these files using the python scripts from the previous section ("Recalculating the presented results from our dataset").
+Now, Sigma and Suricata alerts can be extracted from these files using the Python scripts from the previous section ("Recalculating the presented results from our dataset"):
 
 ```
 python3 count_tps_sigma.py sigma_1.jsonl
-```
-
-```
 python3 count_tps_suricata.py syslog_1.jsonl
 ```
 
