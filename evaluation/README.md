@@ -118,7 +118,7 @@ These rules were downloaded from the [official Sigma repository](https://github.
 Use the following command to create Sigma alerts from the Windows Event log file:
 
 ```
-./check_sigma.pex winlogbeat_1.json rules/ > sigma_1.jsonl
+./check_sigma.pex winlogbeat_1.jsonl rules/ > sigma_1.jsonl
 ```
 
 Now, Sigma and Suricata alerts can be extracted from these files using the Python scripts from the previous section ("Recalculating the presented results from our dataset"):
@@ -134,7 +134,7 @@ The previous section described how to perform one iteration of the simulation on
 Our full evaluation differs from this description in the following aspects:
 
 1. We performed 10 iterations of each configuration on each host instead of one. To change the number of iterations, open `run_simulations` and set `NUM_ITERATIONS=10` (line 3). Make sure to move/backup any old simulation output files before starting a new simulation because they will be overwritten.
-1. We repeated the iterations with a changed Windows logging configuration. To do so, open `provisioning/ansible/client10_playbook.yml` and remove the roles `win10_logging_config` and `win10_sysmon`. This will change from the "best practice" to the "default" logging configuration. Then delete the client VM from VirtualBox and rebuilt it using the script `tools/build_client`.
+1. We repeated the iterations with a changed Windows logging configuration. To do so, open `provisioning/ansible/client10_playbook.yml` and remove the roles `win10_logging_config` and `win10_sysmon`. This will change from the "best practice" to the "default" logging configuration. Then delete the client VM from VirtualBox and rebuild it using the script `tools/build_client`.
 1. We repeated the whole process (i.e., ten iterations per configuration) on another host.
 
 Following these steps and then performing the calculations described in the section "Recalculating the presented results from our dataset" reproduces our complete evaluation.
