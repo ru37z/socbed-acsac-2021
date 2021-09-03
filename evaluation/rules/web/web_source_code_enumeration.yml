@@ -1,0 +1,12 @@
+filter: 'message: "*.git/*"'
+pre_detector:
+  case_condition: directly
+  id: 953d460b-f810-420a-97a2-cfca4c98e602
+  mitre:
+  - attack.discovery
+  - attack.t1083
+  severity: medium
+  title: Source Code Enumeration Detection by Keyword
+sigma_fields: true
+description: Detects source code enumeration that use GET requests by keyword searches
+  in URL strings

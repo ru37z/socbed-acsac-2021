@@ -1,0 +1,13 @@
+filter: 'winlog.channel: "Microsoft-Windows-NTLM/Operational" AND winlog.event_id:
+  8001 AND TargetName: "TERMSRV*"'
+pre_detector:
+  case_condition: directly
+  id: ce5678bb-b9aa-4fb5-be4b-e57f686256ad
+  mitre:
+  - attack.command_and_control
+  - attack.t1219
+  severity: medium
+  title: Potential Remote Desktop Connection to Non-Domain Host
+sigma_fields: true
+description: Detects logons using NTLM to hosts that are potentially not part of the
+  domain.

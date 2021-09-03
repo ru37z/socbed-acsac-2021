@@ -1,0 +1,13 @@
+filter: 'request_type: "TGS" AND cipher: "rc4-hmac" AND NOT service: "$*"'
+pre_detector:
+  case_condition: directly
+  id: 503fe26e-b5f2-4944-a126-eab405cc06e5
+  mitre:
+  - attack.credential_access
+  - attack.t1208
+  - attack.t1558.003
+  severity: medium
+  title: Kerberos Network Traffic RC4 Ticket Encryption
+sigma_fields: true
+description: Detects kerberos TGS request using RC4 encryption which may be indicative
+  of kerberoasting

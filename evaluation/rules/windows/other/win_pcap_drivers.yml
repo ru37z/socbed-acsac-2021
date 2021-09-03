@@ -1,0 +1,15 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4697 AND winlog.event_data.ServiceFileName:
+  ("*pcap*" OR "*npcap*" OR "*npf*" OR "*nm3*" OR "*ndiscap*" OR "*nmnt*" OR "*windivert*"
+  OR "*USBPcap*" OR "*pktmon*")'
+pre_detector:
+  case_condition: directly
+  id: 7b687634-ab20-11ea-bb37-0242ac130002
+  mitre:
+  - attack.discovery
+  - attack.credential_access
+  - attack.t1040
+  severity: medium
+  title: Windows Pcap Drivers
+sigma_fields: true
+description: Detects Windows Pcap driver installation based on a list of associated
+  .sys files.

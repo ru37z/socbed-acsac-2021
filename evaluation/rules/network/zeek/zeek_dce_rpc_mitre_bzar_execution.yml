@@ -1,0 +1,23 @@
+filter: '(endpoint: "JobAdd" AND operation: "atsvc") OR (endpoint: "ITaskSchedulerService"
+  AND operation: "SchRpcEnableTask") OR (endpoint: "ITaskSchedulerService" AND operation:
+  "SchRpcRegisterTask") OR (endpoint: "ITaskSchedulerService" AND operation: "SchRpcRun")
+  OR (endpoint: "IWbemServices" AND operation: "ExecMethod") OR (endpoint: "IWbemServices"
+  AND operation: "ExecMethodAsync") OR (endpoint: "svcctl" AND operation: "CreateServiceA")
+  OR (endpoint: "svcctl" AND operation: "CreateServiceW") OR (endpoint: "svcctl" AND
+  operation: "StartServiceA") OR (endpoint: "svcctl" AND operation: "StartServiceW")'
+pre_detector:
+  case_condition: directly
+  id: b640c0b8-87f8-4daa-aef8-95a24261dd1d
+  mitre:
+  - attack.execution
+  - attack.t1035
+  - attack.t1047
+  - attack.t1053
+  - attack.t1053.002
+  - attack.t1569.002
+  severity: medium
+  title: MITRE BZAR Indicators for Execution
+sigma_fields: true
+description: Windows DCE-RPC functions which indicate an execution techniques on the
+  remote system. All credit for the Zeek mapping of the suspicious endpoint/operation
+  field goes to MITRE

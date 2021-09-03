@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: (517 OR 1102)'
+pre_detector:
+  case_condition: directly
+  id: f2f01843-e7b8-4f95-a35a-d23584476423
+  mitre:
+  - attack.defense_evasion
+  - attack.t1070
+  - attack.t1070.001
+  - car.2016-04-002
+  severity: high
+  title: Security Eventlog Cleared
+sigma_fields: true
+description: Some threat groups tend to delete the local 'Security' Eventlog using
+  certain utitlities

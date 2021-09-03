@@ -1,0 +1,16 @@
+filter: 'winlog.event_id: (4103 OR 400) AND HostName: "ServerRemoteHost" AND HostApplication:
+  "*wsmprovhost.exe*"'
+pre_detector:
+  case_condition: directly
+  id: 96b9f619-aa91-478f-bacb-c3e50f8df575
+  mitre:
+  - attack.execution
+  - attack.t1059.001
+  - attack.t1086
+  - attack.lateral_movement
+  - attack.t1021.006
+  - attack.t1028
+  severity: high
+  title: Remote PowerShell Session
+sigma_fields: true
+description: Detects remote PowerShell sessions

@@ -1,0 +1,15 @@
+filter: 'Initiated: "true" AND destination.domain: ("*.github.com" OR "*.githubusercontent.com")
+  AND process.executable: "C:\Windows\\*"'
+pre_detector:
+  case_condition: directly
+  id: 635dbb88-67b3-4b41-9ea5-a3af2dd88153
+  mitre:
+  - attack.lateral_movement
+  - attack.t1105
+  - attack.exfiltration
+  - attack.t1567.001
+  - attack.t1048
+  severity: high
+  title: Microsoft Binary Github Communication
+sigma_fields: true
+description: Detects an executable in the Windows folder accessing github.com

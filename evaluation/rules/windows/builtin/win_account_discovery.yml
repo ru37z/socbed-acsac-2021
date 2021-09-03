@@ -1,0 +1,16 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4661 AND winlog.event_data.ObjectType:
+  ("SAM_USER" OR "SAM_GROUP") AND winlog.event_data.ObjectName: ("*-512" OR "*-502"
+  OR "*-500" OR "*-505" OR "*-519" OR "*-520" OR "*-544" OR "*-551" OR "*-555" OR
+  "*admin*")'
+pre_detector:
+  case_condition: directly
+  id: 35ba1d85-724d-42a3-889f-2e2362bcaf23
+  mitre:
+  - attack.discovery
+  - attack.t1087
+  - attack.t1087.002
+  severity: high
+  title: AD Privileged Users or Groups Reconnaissance
+sigma_fields: true
+description: Detect priv users or groups recon based on 4661 eventid and known privileged
+  users or groups SIDs

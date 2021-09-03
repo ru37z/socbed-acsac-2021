@@ -1,0 +1,15 @@
+filter: 'winlog.event_data.IntegrityLevel: "Medium" AND winlog.event_data.TargetObject:
+  "*\services\\*" AND winlog.event_data.TargetObject: ("*\ImagePath" OR "*\FailureCommand"
+  OR "*\Parameters\ServiceDll")'
+pre_detector:
+  case_condition: directly
+  id: 0f9c21f1-6a73-4b0e-9809-cb562cb8d981
+  mitre:
+  - attack.privilege_escalation
+  - attack.t1058
+  - attack.t1574.011
+  severity: high
+  title: Possible Privilege Escalation via Service Permissions Weakness
+sigma_fields: true
+description: Detect modification of services configuration (ImagePath, FailureCommand
+  and ServiceDLL) in registry by processes with Medium integrity level

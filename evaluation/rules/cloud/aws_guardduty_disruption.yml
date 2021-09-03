@@ -1,0 +1,13 @@
+filter: 'eventSource: "guardduty.amazonaws.com" AND eventName: "CreateIPSet"'
+pre_detector:
+  case_condition: directly
+  id: 6e61ee20-ce00-4f8d-8aee-bedd8216f7e3
+  mitre:
+  - attack.defense_evasion
+  - attack.t1562.001
+  - attack.t1089
+  severity: high
+  title: AWS GuardDuty Important Change
+sigma_fields: true
+description: Detects updates of the GuardDuty list of trusted IPs, perhaps to disable
+  security alerts against malicious IPs.

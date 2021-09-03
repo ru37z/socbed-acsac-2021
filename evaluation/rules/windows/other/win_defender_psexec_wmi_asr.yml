@@ -1,0 +1,15 @@
+filter: 'winlog.event_id: 1121 AND process.executable: ("*\wmiprvse.exe" OR "*\psexesvc.exe")'
+pre_detector:
+  case_condition: directly
+  id: 97b9ce1e-c5ab-11ea-87d0-0242ac130003
+  mitre:
+  - attack.execution
+  - attack.lateral_movement
+  - attack.t1047
+  - attack.t1035
+  - attack.t1569.002
+  severity: high
+  title: PSExec and WMI Process Creations Block
+sigma_fields: true
+description: Detects blocking of process creations originating from PSExec and WMI
+  commands

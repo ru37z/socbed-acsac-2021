@@ -1,0 +1,62 @@
+filter: 'winlog.event_id: 7045 AND ((winlog.event_data.ServiceFileName: "*cmd*" AND
+  winlog.event_data.ServiceFileName: "*/c*" AND winlog.event_data.ServiceFileName:
+  "*echo*" AND winlog.event_data.ServiceFileName: "*\pipe\\*") OR (winlog.event_data.ServiceFileName:
+  "*%COMSPEC%*" AND winlog.event_data.ServiceFileName: "*/c*" AND winlog.event_data.ServiceFileName:
+  "*echo*" AND winlog.event_data.ServiceFileName: "*\pipe\\*") OR (winlog.event_data.ServiceFileName:
+  "*rundll32*" AND winlog.event_data.ServiceFileName: "*.dll,a*" AND winlog.event_data.ServiceFileName:
+  "*/p:*"))'
+pre_detector:
+  case_condition: directly
+  id: 843544a7-56e0-4dcc-a44f-5cc266dd97d6
+  mitre:
+  - attack.privilege_escalation
+  - attack.t1134
+  - attack.t1134.001
+  - attack.t1134.002
+  severity: critical
+  title: Meterpreter or Cobalt Strike Getsystem Service Installation
+sigma_fields: true
+description: Detects the use of getsystem Meterpreter/Cobalt Strike command by detecting
+  a specific service installation
+---
+filter: 'winlog.channel: "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:
+  6 AND ((winlog.event_data.ServiceFileName: "*cmd*" AND winlog.event_data.ServiceFileName:
+  "*/c*" AND winlog.event_data.ServiceFileName: "*echo*" AND winlog.event_data.ServiceFileName:
+  "*\pipe\\*") OR (winlog.event_data.ServiceFileName: "*%COMSPEC%*" AND winlog.event_data.ServiceFileName:
+  "*/c*" AND winlog.event_data.ServiceFileName: "*echo*" AND winlog.event_data.ServiceFileName:
+  "*\pipe\\*") OR (winlog.event_data.ServiceFileName: "*rundll32*" AND winlog.event_data.ServiceFileName:
+  "*.dll,a*" AND winlog.event_data.ServiceFileName: "*/p:*"))'
+pre_detector:
+  case_condition: directly
+  id: 843544a7-56e0-4dcc-a44f-5cc266dd97d6
+  mitre:
+  - attack.privilege_escalation
+  - attack.t1134
+  - attack.t1134.001
+  - attack.t1134.002
+  severity: critical
+  title: Meterpreter or Cobalt Strike Getsystem Service Installation
+sigma_fields: true
+description: Detects the use of getsystem Meterpreter/Cobalt Strike command by detecting
+  a specific service installation
+---
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4697 AND ((winlog.event_data.ServiceFileName:
+  "*cmd*" AND winlog.event_data.ServiceFileName: "*/c*" AND winlog.event_data.ServiceFileName:
+  "*echo*" AND winlog.event_data.ServiceFileName: "*\pipe\\*") OR (winlog.event_data.ServiceFileName:
+  "*%COMSPEC%*" AND winlog.event_data.ServiceFileName: "*/c*" AND winlog.event_data.ServiceFileName:
+  "*echo*" AND winlog.event_data.ServiceFileName: "*\pipe\\*") OR (winlog.event_data.ServiceFileName:
+  "*rundll32*" AND winlog.event_data.ServiceFileName: "*.dll,a*" AND winlog.event_data.ServiceFileName:
+  "*/p:*"))'
+pre_detector:
+  case_condition: directly
+  id: 843544a7-56e0-4dcc-a44f-5cc266dd97d6
+  mitre:
+  - attack.privilege_escalation
+  - attack.t1134
+  - attack.t1134.001
+  - attack.t1134.002
+  severity: critical
+  title: Meterpreter or Cobalt Strike Getsystem Service Installation
+sigma_fields: true
+description: Detects the use of getsystem Meterpreter/Cobalt Strike command by detecting
+  a specific service installation

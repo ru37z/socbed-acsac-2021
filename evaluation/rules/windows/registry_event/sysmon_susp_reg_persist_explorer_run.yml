@@ -1,0 +1,16 @@
+filter: 'winlog.event_data.TargetObject: "*\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run"
+  AND winlog.event_data.Details: ("C:\Windows\Temp\\*" OR "C:\ProgramData\\*" OR "*\AppData\\*"
+  OR "C:\$Recycle.bin\\*" OR "C:\Temp\\*" OR "C:\Users\Public\\*" OR "C:\Users\Default\\*")'
+pre_detector:
+  case_condition: directly
+  id: b7916c2a-fa2f-4795-9477-32b731f70f11
+  mitre:
+  - attack.persistence
+  - attack.t1060
+  - attack.t1547.001
+  - capec.270
+  severity: high
+  title: Registry Persistence via Explorer Run Key
+sigma_fields: true
+description: Detects a possible persistence mechanism using RUN key for Windows Explorer
+  and pointing to a suspicious folder

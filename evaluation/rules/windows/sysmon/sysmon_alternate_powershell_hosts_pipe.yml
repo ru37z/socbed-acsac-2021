@@ -1,0 +1,15 @@
+filter: 'winlog.channel: "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:
+  17 AND file.name: "\PSHost*" AND NOT process.executable: ("*\powershell.exe" OR
+  "*\powershell_ise.exe")'
+pre_detector:
+  case_condition: directly
+  id: 58cb02d5-78ce-4692-b3e1-dce850aae41a
+  mitre:
+  - attack.execution
+  - attack.t1086
+  - attack.t1059.001
+  severity: medium
+  title: Alternate PowerShell Hosts Pipe
+sigma_fields: true
+description: Detects alternate PowerShell hosts potentially bypassing detections looking
+  for powershell.exe

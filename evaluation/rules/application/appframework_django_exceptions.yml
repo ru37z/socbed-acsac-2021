@@ -1,0 +1,15 @@
+filter: '"SuspiciousOperation" OR "DisallowedHost" OR "DisallowedModelAdminLookup"
+  OR "DisallowedModelAdminToField" OR "DisallowedRedirect" OR "InvalidSessionKey"
+  OR "RequestDataTooBig" OR "SuspiciousFileOperation" OR "SuspiciousMultipartForm"
+  OR "SuspiciousSession" OR "TooManyFieldsSent" OR "PermissionDenied"'
+pre_detector:
+  case_condition: directly
+  id: fd435618-981e-4a7c-81f8-f78ce480d616
+  mitre:
+  - attack.initial_access
+  - attack.t1190
+  severity: medium
+  title: Django Framework Exceptions
+sigma_fields: true
+description: Detects suspicious Django web application framework exceptions that could
+  indicate exploitation attempts

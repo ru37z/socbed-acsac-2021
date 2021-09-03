@@ -1,0 +1,14 @@
+filter: 'uri_query: ("*cmd=read*" OR "*connect&target*" OR "*cmd=connect*" OR "*cmd=disconnect*"
+  OR "*cmd=forward*") AND NOT referer AND NOT useragent AND method: "POST"'
+pre_detector:
+  case_condition: directly
+  id: 2ea44a60-cfda-11ea-87d0-0242ac130003
+  mitre:
+  - attack.persistence
+  - attack.t1100
+  - attack.t1505.003
+  severity: high
+  title: Webshell ReGeorg Detection Via Web Logs
+sigma_fields: true
+description: Certain strings in the uri_query field when combined with null referer
+  and null user agent can indicate activity associated with the webshell ReGeorg.

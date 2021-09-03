@@ -1,0 +1,13 @@
+filter: 'message: "exit signal Segmentation Fault"'
+pre_detector:
+  case_condition: directly
+  id: 1da8ce0b-855d-4004-8860-7d64d42063b1
+  mitre:
+  - attack.impact
+  - attack.t1499
+  - attack.t1499.004
+  severity: high
+  title: Apache Segmentation Fault
+sigma_fields: true
+description: Detects a segmentation fault error message caused by a creashing apache
+  worker process

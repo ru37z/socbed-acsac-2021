@@ -1,0 +1,11 @@
+filter: 'process.executable: "*\mstsc.exe" AND file.path: "*\Microsoft\Windows\Start
+  Menu\Programs\Startup\\*"'
+pre_detector:
+  case_condition: directly
+  id: 52753ea4-b3a0-4365-910d-36cff487b789
+  mitre: []
+  severity: high
+  title: Hijack Legit RDP Session to Move Laterally
+sigma_fields: true
+description: Detects the usage of tsclient share to place a backdoor on the RDP source
+  machine's startup folder

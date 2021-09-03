@@ -1,0 +1,12 @@
+filter: 'query: ("aaa.stage.*" OR "post.1*")'
+pre_detector:
+  case_condition: directly
+  id: 2975af79-28c4-4d2f-a951-9095f229df29
+  mitre:
+  - attack.command_and_control
+  - attack.t1071
+  - attack.t1071.004
+  severity: high
+  title: Cobalt Strike DNS Beaconing
+sigma_fields: true
+description: Detects suspicious DNS queries known from Cobalt Strike beacons

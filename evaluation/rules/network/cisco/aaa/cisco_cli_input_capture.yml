@@ -1,0 +1,13 @@
+filter: '"show history" OR "show history all" OR "show logging"'
+pre_detector:
+  case_condition: directly
+  id: b094d9fb-b1ad-4650-9f1a-fb7be9f1d34b
+  mitre:
+  - attack.credential_access
+  - attack.t1139
+  - attack.t1552.003
+  severity: medium
+  title: Cisco Show Commands Input
+sigma_fields: true
+description: See what commands are being input into the device by other people, full
+  credentials can be in the history

@@ -1,0 +1,11 @@
+filter: '"DataError" OR "IntegrityError" OR "ProgrammingError" OR "OperationalError"'
+pre_detector:
+  case_condition: directly
+  id: 19aefed0-ffd4-47dc-a7fc-f8b1425e84f9
+  mitre:
+  - attack.initial_access
+  - attack.t1190
+  severity: medium
+  title: Python SQL Exceptions
+sigma_fields: true
+description: Generic rule for SQL exceptions in Python according to PEP 249

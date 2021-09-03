@@ -1,0 +1,15 @@
+filter: 'type: "PATH" AND name: ("/home/*/.bashrc" OR "/home/*/.bash_profile" OR "/home/*/.profile"
+  OR "/etc/profile" OR "/etc/shells" OR "/etc/bashrc" OR "/etc/csh.cshrc" OR "/etc/csh.login")'
+pre_detector:
+  case_condition: directly
+  id: e74e15cc-c4b6-4c80-b7eb-dfe49feb7fe9
+  mitre:
+  - attack.s0003
+  - attack.t1156
+  - attack.persistence
+  - attack.t1546.004
+  severity: medium
+  title: Edit of .bash_profile and .bashrc
+sigma_fields: true
+description: Detects change of user environment. Adversaries can insert code into
+  these files to gain persistence each time a user logs in or opens a new shell.

@@ -1,0 +1,20 @@
+filter: 'winlog.channel: "Security" AND ((winlog.event_id: 4656 AND winlog.event_data.ObjectName:
+  "*\lsass.exe" AND winlog.event_data.AccessMask: ("*0x40*" OR "*0x1400*" OR "*0x1000*"
+  OR "*0x100000*" OR "*0x1410*" OR "*0x1010*" OR "*0x1438*" OR "*0x143a*" OR "*0x1418*"
+  OR "*0x1f0fff*" OR "*0x1f1fff*" OR "*0x1f2fff*" OR "*0x1f3fff*")) OR ((winlog.event_id:
+  4663 AND winlog.event_data.ObjectName: "*\lsass.exe" AND AccessList: ("*4484*" OR
+  "*4416*")) AND NOT (process.executable: ("*\wmiprvse.exe" OR "*\taskmgr.exe" OR
+  "*\procexp64.exe" OR "*\procexp.exe" OR "*\lsm.exe" OR "*\csrss.exe" OR "*\wininit.exe"
+  OR "*\vmtoolsd.exe" OR "*\minionhost.exe" OR "*\VsTskMgr.exe"))))'
+pre_detector:
+  case_condition: directly
+  id: 4a1b6da0-d94f-4fc3-98fc-2d9cb9e5ee76
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - car.2019-04-004
+  - attack.t1003.001
+  severity: high
+  title: Generic Password Dumper Activity on LSASS
+sigma_fields: true
+description: Detects process handle on LSASS process with certain access mask

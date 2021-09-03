@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: (4657 OR 4656 OR 4660 OR
+  4663) AND winlog.event_data.ObjectName: "*\Microsoft\Windows Defender\Exclusions\\*"'
+pre_detector:
+  case_condition: directly
+  id: e9c8808f-4cfb-4ba9-97d4-e5f3beaa244d
+  mitre:
+  - attack.defense_evasion
+  - attack.t1089
+  - attack.t1562.001
+  severity: high
+  title: Windows Defender Exclusion Set
+sigma_fields: true
+description: Detects scenarios where an windows defender exclusion was added in registry
+  where an entity would want to bypass antivirus scanning from windows defender

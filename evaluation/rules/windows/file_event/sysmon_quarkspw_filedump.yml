@@ -1,0 +1,12 @@
+filter: 'file.path: "*\AppData\Local\Temp\SAM-*.dmp*"'
+pre_detector:
+  case_condition: directly
+  id: 847def9e-924d-4e90-b7c4-5f581395a2b4
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.t1003.002
+  severity: critical
+  title: QuarksPwDump Dump File
+sigma_fields: true
+description: Detects a dump file written by QuarksPwDump password dumper

@@ -1,0 +1,13 @@
+filter: 'winlog.event_id: 1033 AND winlog.event_data.Source: "Microsoft-Windows-DHCP-Server"'
+pre_detector:
+  case_condition: directly
+  id: 13fc89a9-971e-4ca6-b9dc-aa53a445bf40
+  mitre:
+  - attack.defense_evasion
+  - attack.t1073
+  - attack.t1574.002
+  severity: critical
+  title: DHCP Server Loaded the CallOut DLL
+sigma_fields: true
+description: This rule detects a DHCP server in which a specified Callout DLL (in
+  registry) was loaded

@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4738 AND Message: ("*DES*"
+  OR "*Preauth*" OR "*Encrypted*") AND Message: "*Enabled*"'
+pre_detector:
+  case_condition: directly
+  id: f6de9536-0441-4b3f-a646-f4e00f300ffd
+  mitre:
+  - attack.defense_evasion
+  - attack.t1089
+  - attack.t1562.001
+  severity: high
+  title: Weak Encryption Enabled and Kerberoast
+sigma_fields: true
+description: Detects scenario where weak encryption is enabled for a user profile
+  which could be used for hash/password cracking.

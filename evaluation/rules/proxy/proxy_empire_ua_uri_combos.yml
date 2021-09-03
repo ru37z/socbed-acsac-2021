@@ -1,0 +1,15 @@
+filter: 'c-useragent: "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like
+  Gecko" AND cs-uri-query: ("/admin/get.php" OR "/news.php" OR "/login/process.php")
+  AND cs-method: "POST"'
+pre_detector:
+  case_condition: directly
+  id: b923f7d6-ac89-4a50-a71a-89fb846b4aa8
+  mitre:
+  - attack.defense_evasion
+  - attack.command_and_control
+  - attack.t1071.001
+  - attack.t1043
+  severity: high
+  title: Empire UserAgent URI Combo
+sigma_fields: true
+description: Detects user agent and URI paths used by empire agents

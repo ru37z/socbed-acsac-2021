@@ -1,0 +1,13 @@
+filter: 'winlog.channel: "Security" AND ((winlog.event_id: 4742 AND ServicePrincipalNames:
+  "*GC/*") OR (winlog.event_id: 5136 AND LDAPDisplayName: "servicePrincipalName" AND
+  Value: "GC/*"))'
+pre_detector:
+  case_condition: directly
+  id: 32e19d25-4aed-4860-a55a-be99cb0bf7ed
+  mitre:
+  - attack.credential_access
+  - attack.t1207
+  severity: high
+  title: Possible DC Shadow
+sigma_fields: true
+description: Detects DCShadow via create new SPN

@@ -1,0 +1,40 @@
+filter: 'winlog.event_id: 7045 AND winlog.event_data.ImagePath: "*tap0901*"'
+pre_detector:
+  case_condition: directly
+  id: 8e4cf0e5-aa5d-4dc3-beff-dc26917744a9
+  mitre:
+  - attack.exfiltration
+  - attack.t1048
+  severity: medium
+  title: Tap Driver Installation
+sigma_fields: true
+description: Well-known TAP software installation. Possible preparation for data exfiltration
+  using tunnelling techniques
+---
+filter: 'winlog.channel: "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:
+  6 AND winlog.event_data.ImagePath: "*tap0901*"'
+pre_detector:
+  case_condition: directly
+  id: 8e4cf0e5-aa5d-4dc3-beff-dc26917744a9
+  mitre:
+  - attack.exfiltration
+  - attack.t1048
+  severity: medium
+  title: Tap Driver Installation
+sigma_fields: true
+description: Well-known TAP software installation. Possible preparation for data exfiltration
+  using tunnelling techniques
+---
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4697 AND winlog.event_data.ImagePath:
+  "*tap0901*"'
+pre_detector:
+  case_condition: directly
+  id: 8e4cf0e5-aa5d-4dc3-beff-dc26917744a9
+  mitre:
+  - attack.exfiltration
+  - attack.t1048
+  severity: medium
+  title: Tap Driver Installation
+sigma_fields: true
+description: Well-known TAP software installation. Possible preparation for data exfiltration
+  using tunnelling techniques

@@ -1,0 +1,31 @@
+filter: 'winlog.event_data.ServiceName: "PSEXESVC" AND ((winlog.event_id: 7045 AND
+  winlog.event_data.ServiceFileName: "*\PSEXESVC.exe") OR winlog.event_id: 7036)'
+pre_detector:
+  case_condition: directly
+  id: 42c575ea-e41e-41f1-b248-8093c3e82a28
+  mitre:
+  - attack.execution
+  - attack.t1035
+  - attack.t1569.002
+  - attack.s0029
+  severity: low
+  title: PsExec Tool Execution
+sigma_fields: true
+description: Detects PsExec service installation and execution events (service and
+  Sysmon)
+---
+filter: 'process.executable: "*\PSEXESVC.exe" AND user.name: "SYSTEM" AND user.domain:
+  "NT AUTHORITY"'
+pre_detector:
+  case_condition: directly
+  id: 42c575ea-e41e-41f1-b248-8093c3e82a28
+  mitre:
+  - attack.execution
+  - attack.t1035
+  - attack.t1569.002
+  - attack.s0029
+  severity: low
+  title: PsExec Tool Execution
+sigma_fields: true
+description: Detects PsExec service installation and execution events (service and
+  Sysmon)

@@ -1,0 +1,22 @@
+filter: 'file.path: ("*\pwdump*" OR "*\kirbi*" OR "*\pwhashes*" OR "*\wce_ccache*"
+  OR "*\wce_krbtkts*" OR "*\fgdump-log*") AND file.path: ("*\test.pwd" OR "*\lsremora64.dll"
+  OR "*\lsremora.dll" OR "*\fgexec.exe" OR "*\wceaux.dll" OR "*\SAM.out" OR "*\SECURITY.out"
+  OR "*\SYSTEM.out" OR "*\NTDS.out" OR "*\DumpExt.dll" OR "*\DumpSvc.exe" OR "*\cachedump64.exe"
+  OR "*\cachedump.exe" OR "*\pstgdump.exe" OR "*\servpw.exe" OR "*\servpw64.exe" OR
+  "*\pwdump.exe" OR "*\procdump64.exe")'
+pre_detector:
+  case_condition: directly
+  id: 8fbf3271-1ef6-4e94-8210-03c2317947f6
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.t1003.001
+  - attack.t1003.002
+  - attack.t1003.003
+  - attack.t1003.004
+  - attack.t1003.005
+  severity: high
+  title: Cred Dump Tools Dropped Files
+sigma_fields: true
+description: Files with well-known filenames (parts of credential dump software or
+  files produced by them) creation

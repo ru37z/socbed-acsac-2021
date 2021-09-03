@@ -1,0 +1,12 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4624 AND process.executable:
+  "*\WmiPrvSE.exe"'
+pre_detector:
+  case_condition: directly
+  id: 5af54681-df95-4c26-854f-2565e13cfab0
+  mitre:
+  - attack.execution
+  - attack.t1047
+  severity: low
+  title: Login with WMI
+sigma_fields: true
+description: Detection of logins performed with WMI

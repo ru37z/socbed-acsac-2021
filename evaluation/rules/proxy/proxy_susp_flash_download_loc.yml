@@ -1,0 +1,18 @@
+filter: 'c-uri-query: ("*/install_flash_player.exe" OR "*/flash_install.php*") AND
+  NOT c-uri-stem: "*.adobe.com/*"'
+pre_detector:
+  case_condition: directly
+  id: 4922a5dd-6743-4fc2-8e81-144374280997
+  mitre:
+  - attack.initial_access
+  - attack.t1189
+  - attack.execution
+  - attack.t1204.002
+  - attack.t1204
+  - attack.defense_evasion
+  - attack.t1036.005
+  - attack.t1036
+  severity: high
+  title: Flash Player Update from Suspicious Location
+sigma_fields: true
+description: Detects a flashplayer update from an unofficial location

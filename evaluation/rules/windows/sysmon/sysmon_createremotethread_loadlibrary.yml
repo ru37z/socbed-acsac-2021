@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:
+  8 AND winlog.event_data.StartModule: "*\kernel32.dll" AND StartFunction: "LoadLibraryA"'
+pre_detector:
+  case_condition: directly
+  id: 052ec6f6-1adc-41e6-907a-f1c813478bee
+  mitre:
+  - attack.defense_evasion
+  - attack.t1055
+  - attack.t1055.001
+  severity: critical
+  title: CreateRemoteThread API and LoadLibrary
+sigma_fields: true
+description: Detects potential use of CreateRemoteThread api and LoadLibrary function
+  to inject DLL into a process

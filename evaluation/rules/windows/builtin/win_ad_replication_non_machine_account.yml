@@ -1,0 +1,16 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 4662 AND winlog.event_data.AccessMask:
+  "0x100" AND winlog.event_data.Properties: ("*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*"
+  OR "*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*" OR "*89e95b76-444d-4c62-991a-0facbeda640c*")
+  AND NOT (user.name: "*$" OR user.name: "MSOL_*")'
+pre_detector:
+  case_condition: directly
+  id: 17d619c1-e020-4347-957e-1d1207455c93
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.t1003.006
+  severity: critical
+  title: Active Directory Replication from Non Machine Account
+sigma_fields: true
+description: Detects potential abuse of Active Directory Replication Service (ADRS)
+  from a non machine account to request credentials.

@@ -1,0 +1,17 @@
+filter: 'winlog.event_data.TargetObject: ("*\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows\AppInit_Dlls"
+  OR "*\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows\AppInit_Dlls")
+  OR NewName: ("*\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows\AppInit_Dlls"
+  OR "*\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows\AppInit_Dlls")'
+pre_detector:
+  case_condition: directly
+  id: 4f84b697-c9ed-4420-8ab5-e09af5b2345d
+  mitre:
+  - attack.persistence
+  - attack.t1103
+  - attack.t1546.010
+  severity: medium
+  title: New DLL Added to AppInit_DLLs Registry Key
+sigma_fields: true
+description: DLLs that are specified in the AppInit_DLLs value in the Registry key
+  HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows are loaded by user32.dll
+  into every process that loads user32.dll

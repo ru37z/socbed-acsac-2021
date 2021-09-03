@@ -1,0 +1,17 @@
+filter: 'winlog.channel: "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:
+  17 AND file.name: ("*\lsadump*" OR "*\cachedump*" OR "*\wceservicepipe*")'
+pre_detector:
+  case_condition: directly
+  id: 961d0ba2-3eea-4303-a930-2cf78bbfcc5e
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.t1003.001
+  - attack.t1003.002
+  - attack.t1003.004
+  - attack.t1003.005
+  severity: critical
+  title: Cred Dump-Tools Named Pipes
+sigma_fields: true
+description: Detects well-known credential dumping tools execution via specific named
+  pipes

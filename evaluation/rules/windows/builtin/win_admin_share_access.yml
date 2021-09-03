@@ -1,0 +1,13 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5140 AND winlog.event_data.ShareName:
+  "Admin$" AND NOT user.name: "*$"'
+pre_detector:
+  case_condition: directly
+  id: 098d7118-55bc-4912-a836-dc6483a8d150
+  mitre:
+  - attack.lateral_movement
+  - attack.t1077
+  - attack.t1021.002
+  severity: low
+  title: Access to ADMIN$ Share
+sigma_fields: true
+description: Detects access to $ADMIN share

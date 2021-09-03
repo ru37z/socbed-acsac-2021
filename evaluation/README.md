@@ -107,7 +107,21 @@ pip install elasticsearch elasticsearch-dsl
 
 The simulation will take approx. 70 minutes.
 During the simulation and at the end, several log files will be created (in the same directory), including the Windows Event logs and Linux syslogs downloaded from the VMs.
-Sigma and Suricata alerts can be extracted from these files as shown in the previous section ("Recalculating the presented results from our dataset").
+Sigma logs can be extracted from winlogbeat logs with `check_sigma.pex`, an executable using the open source [Logprep](https://github.com/fkie-cad/Logprep) project and the Sigma rules.
+
+```
+./check_sigma.pex winlogbeat_1.json rules/ > sigma_1.jsonl
+```
+
+Now, Sigma and Suricate alerts can be extracted from these files using the python scripts from the previous section ("Recalculating the presented results from our dataset").
+
+```
+python3 count_tps_sigma.py sigma_1.jsonl
+```
+
+```
+python3 count_tps_suricata.py syslog_1.jsonl
+```
 
 ## Reproducing the full evaluation
 

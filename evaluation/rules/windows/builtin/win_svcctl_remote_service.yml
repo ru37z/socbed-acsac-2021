@@ -1,0 +1,15 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5145 AND winlog.event_data.ShareName:
+  "\\*\IPC$" AND RelativeTargetName: "svcctl" AND Accesses: "*WriteData*"'
+pre_detector:
+  case_condition: directly
+  id: 586a8d6b-6bfe-4ad9-9d78-888cd2fe50c3
+  mitre:
+  - attack.lateral_movement
+  - attack.persistence
+  - attack.t1077
+  - attack.t1021.002
+  severity: medium
+  title: Remote Service Activity via SVCCTL Named Pipe
+sigma_fields: true
+description: Detects remote service activity via remote access to the svcctl named
+  pipe

@@ -1,0 +1,13 @@
+filter: '(c-useragent: "*WebDAV*" OR c-uri: "*webdav*") AND (resp_mime_types: "*dosexec*"
+  OR c-uri: "*.exe")'
+pre_detector:
+  case_condition: directly
+  id: aac2fd97-bcba-491b-ad66-a6edf89c71bf
+  mitre:
+  - attack.command_and_control
+  - attack.t1105
+  severity: medium
+  title: Executable from Webdav
+sigma_fields: true
+description: Detects executable access via webdav6. Can be seen in APT 29 such as
+  from the emulated APT 29 hackathon https://github.com/OTRF/detection-hackathon-apt29/

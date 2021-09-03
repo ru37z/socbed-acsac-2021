@@ -1,0 +1,16 @@
+filter: 'winlog.event_id: 7045 AND winlog.event_data.ServiceName: "BTOBTO" AND winlog.event_data.ServiceFileName:
+  "*\execute.bat"'
+pre_detector:
+  case_condition: directly
+  id: 52a85084-6989-40c3-8f32-091e12e13f09
+  mitre:
+  - attack.lateral_movement
+  - attack.execution
+  - attack.t1077
+  - attack.t1021.002
+  - attack.t1035
+  - attack.t1569.002
+  severity: critical
+  title: smbexec.py Service Installation
+sigma_fields: true
+description: Detects the use of smbexec.py tool by detecting a specific service installation

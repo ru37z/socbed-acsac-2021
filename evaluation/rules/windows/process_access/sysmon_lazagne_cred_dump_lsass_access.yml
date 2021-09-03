@@ -1,0 +1,14 @@
+filter: 'winlog.event_data.TargetImage: "*\lsass.exe" AND winlog.event_data.CallTrace:
+  "C:\Windows\SYSTEM32\ntdll.dll+*|C:\Windows\System32\KERNELBASE.dll+*_ctypes.pyd+*python27.dll+*"
+  AND winlog.event_data.GrantedAccess: "0x1FFFFF"'
+pre_detector:
+  case_condition: directly
+  id: 4b9a8556-99c4-470b-a40c-9c8d02c77ed0
+  mitre:
+  - attack.credential_access
+  - attack.t1003.001
+  - attack.s0349
+  severity: critical
+  title: Credential Dumping by LaZagne
+sigma_fields: true
+description: Detects LSASS process access by LaZagne for credential dumping.

@@ -1,0 +1,18 @@
+filter: '(endpoint: "spoolss" AND operation: "RpcAddMonitor") OR (endpoint: "spoolss"
+  AND operation: "RpcAddPrintProcessor") OR (endpoint: "IRemoteWinspool" AND operation:
+  "RpcAsyncAddMonitor") OR (endpoint: "IRemoteWinspool" AND operation: "RpcAsyncAddPrintProcessor")
+  OR (endpoint: "ISecLogon" AND operation: "SeclCreateProcessWithLogonW") OR (endpoint:
+  "ISecLogon" AND operation: "SeclCreateProcessWithLogonExW")'
+pre_detector:
+  case_condition: directly
+  id: 53389db6-ba46-48e3-a94c-e0f2cefe1583
+  mitre:
+  - attack.persistence
+  - attack.t1004
+  - attack.t1547.004
+  severity: medium
+  title: MITRE BZAR Indicators for Persistence
+sigma_fields: true
+description: Windows DCE-RPC functions which indicate a persistence techniques on
+  the remote system. All credit for the Zeek mapping of the suspicious endpoint/operation
+  field goes to MITRE.

@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND winlog.event_id: 5145 AND winlog.event_data.ShareName:
+  "*IPC*" AND RelativeTargetName: "protected_storage"'
+pre_detector:
+  case_condition: directly
+  id: 45545954-4016-43c6-855e-eae8f1c369dc
+  mitre:
+  - attack.lateral_movement
+  - attack.t1021
+  - attack.t1021.002
+  severity: critical
+  title: Protected Storage Service Access
+sigma_fields: true
+description: Detects access to a protected_storage service over the network. Potential
+  abuse of DPAPI to extract domain backup keys from Domain Controllers

@@ -1,0 +1,10 @@
+filter: 'winlog.channel: "Microsoft-Windows-Windows Defender/Operational" AND winlog.event_id:
+  (1006 OR 1116 OR 1015 OR 1117)'
+pre_detector:
+  case_condition: directly
+  id: 57b649ef-ff42-4fb0-8bf6-62da243a1708
+  mitre: []
+  severity: high
+  title: Windows Defender Threat Detected
+sigma_fields: true
+description: Detects all actions taken by Windows Defender malware detection engines

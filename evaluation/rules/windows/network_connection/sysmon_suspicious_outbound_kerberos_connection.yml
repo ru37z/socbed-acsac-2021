@@ -1,0 +1,17 @@
+filter: 'destination.port: 88 AND Initiated: "true" AND NOT process.executable: ("*\lsass.exe"
+  OR "*\opera.exe" OR "*\chrome.exe" OR "*\firefox.exe")'
+pre_detector:
+  case_condition: directly
+  id: e54979bd-c5f9-4d6c-967b-a04b19ac4c74
+  mitre:
+  - attack.credential_access
+  - attack.t1558
+  - attack.t1208
+  - attack.lateral_movement
+  - attack.t1550.003
+  - attack.t1097
+  severity: high
+  title: Suspicious Outbound Kerberos Connection
+sigma_fields: true
+description: Detects suspicious outbound network activity via kerberos default port
+  indicating possible lateral movement or first stage PrivEsc via delegation.

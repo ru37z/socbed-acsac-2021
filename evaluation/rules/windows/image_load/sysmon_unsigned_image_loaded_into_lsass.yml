@@ -1,0 +1,12 @@
+filter: 'process.executable: "*\lsass.exe" AND Signed: "false"'
+pre_detector:
+  case_condition: directly
+  id: 857c8db3-c89b-42fb-882b-f681c7cf4da2
+  mitre:
+  - attack.credential_access
+  - attack.t1003
+  - attack.t1003.001
+  severity: medium
+  title: Unsigned Image Loaded Into LSASS Process
+sigma_fields: true
+description: Loading unsigned image (DLL, EXE) into LSASS process

@@ -1,0 +1,14 @@
+filter: '"username" OR "aaa"'
+pre_detector:
+  case_condition: directly
+  id: 6d844f0f-1c18-41af-8f19-33e7654edfc3
+  mitre:
+  - attack.persistence
+  - attack.t1136
+  - attack.t1136.001
+  - attack.t1098
+  severity: high
+  title: Cisco Local Accounts
+sigma_fields: true
+description: Find local accounts being created or modified as well as remote authentication
+  configurations

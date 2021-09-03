@@ -1,0 +1,16 @@
+filter: 'file.path: ("*\wmiclnt.dll" OR "*\WmiApRpl.dll" OR "*\wmiprov.dll" OR "*\wmiutils.dll"
+  OR "*\wbemcomn.dll" OR "*\wbemprox.dll" OR "*\WMINet_Utils.dll" OR "*\wbemsvc.dll"
+  OR "*\fastprox.dll") AND NOT process.executable: ("*\WmiPrvSe.exe" OR "*\WmiAPsrv.exe"
+  OR "*\svchost.exe" OR "*\DeviceCensus.exe" OR "*\CompatTelRunner.exe" OR "*\sdiagnhost.exe"
+  OR "*\SIHClient.exe" OR "*\ngentask.exe" OR "*\windows\system32\taskhostw.exe" OR
+  "*\windows\system32\MoUsoCoreWorker.exe")'
+pre_detector:
+  case_condition: directly
+  id: 671bb7e3-a020-4824-a00e-2ee5b55f385e
+  mitre:
+  - attack.execution
+  - attack.t1047
+  severity: high
+  title: WMI Modules Loaded
+sigma_fields: true
+description: Detects non wmiprvse loading WMI modules

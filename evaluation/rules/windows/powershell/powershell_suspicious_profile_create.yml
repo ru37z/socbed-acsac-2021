@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:
+  11 AND file.path: "*\profile.ps1*" AND (file.path: "*\My Documents\PowerShell\\*"
+  OR file.path: "*C:\Windows\System32\WindowsPowerShell\v1.0\\*")'
+pre_detector:
+  case_condition: directly
+  id: b5b78988-486d-4a80-b991-930eff3ff8bf
+  mitre:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1546.013
+  severity: high
+  title: Powershell Profile.ps1 Modification
+sigma_fields: true
+description: Detects a change in profile.ps1 of the Powershell profile

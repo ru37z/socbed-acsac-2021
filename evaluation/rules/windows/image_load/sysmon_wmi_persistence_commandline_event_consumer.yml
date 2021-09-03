@@ -1,0 +1,13 @@
+filter: 'process.executable: "C:\Windows\System32\wbem\WmiPrvSE.exe" AND file.path:
+  "*\wbemcons.dll"'
+pre_detector:
+  case_condition: directly
+  id: 05936ce2-ee05-4dae-9d03-9a391cf2d2c6
+  mitre:
+  - attack.t1084
+  - attack.t1546.003
+  - attack.persistence
+  severity: high
+  title: WMI Persistence - Command Line Event Consumer
+sigma_fields: true
+description: Detects WMI command line event consumers

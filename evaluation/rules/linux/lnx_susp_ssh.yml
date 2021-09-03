@@ -1,0 +1,16 @@
+filter: '"*unexpected internal error*" OR "*unknown or unsupported key type*" OR "*invalid
+  certificate signing key*" OR "*invalid elliptic curve value*" OR "*incorrect signature*"
+  OR "*error in libcrypto*" OR "*unexpected bytes remain after decoding*" OR "*fatal:
+  buffer_get_string: bad string*" OR "*Local: crc32 compensation attack*" OR "*bad
+  client public DH value*" OR "*Corrupted MAC on input*"'
+pre_detector:
+  case_condition: directly
+  id: e76b413a-83d0-4b94-8e4c-85db4a5b8bdc
+  mitre:
+  - attack.initial_access
+  - attack.t1190
+  severity: medium
+  title: Suspicious OpenSSH Daemon Error
+sigma_fields: true
+description: Detects suspicious SSH / SSHD error messages that indicate a fatal or
+  suspicious error that could be caused by exploiting attempts

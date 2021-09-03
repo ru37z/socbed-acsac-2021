@@ -1,0 +1,13 @@
+filter: 'Message: "*System.Net.WebClient*" AND (Message: "*.DownloadFile(*" OR Message:
+  "*.DownloadString(*")'
+pre_detector:
+  case_condition: directly
+  id: 65531a81-a694-4e31-ae04-f8ba5bc33759
+  mitre:
+  - attack.execution
+  - attack.t1059.001
+  - attack.t1086
+  severity: medium
+  title: Suspicious PowerShell Download
+sigma_fields: true
+description: Detects suspicious PowerShell download command

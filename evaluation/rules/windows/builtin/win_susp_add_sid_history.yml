@@ -1,0 +1,14 @@
+filter: 'winlog.channel: "Security" AND (winlog.event_id: (4765 OR 4766) OR ((winlog.event_id:
+  4738 AND NOT (SidHistory: ("-" OR "%%1793"))) AND SidHistory))'
+pre_detector:
+  case_condition: directly
+  id: 2632954e-db1c-49cb-9936-67d1ef1d17d2
+  mitre:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1178
+  - attack.t1134.005
+  severity: medium
+  title: Addition of SID History to Active Directory Object
+sigma_fields: true
+description: An attacker can use the SID history attribute to gain additional privileges.
