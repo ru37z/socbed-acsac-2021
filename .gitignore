@@ -61,7 +61,7 @@ packer_cache/
 exports/
 
 # Generated Malware
-generate_malware/
+provisioning/ansible/roles/generate_malware/files/
 
 # ISO files
 *.iso
