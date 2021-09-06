@@ -55,7 +55,7 @@ To recalculate the number of Sigma alerts (line 8-12) execute the following comm
 find dataset -name 'sigma_??.jsonl' -exec python3 count_tps_sigma.py {} \;
 ```
 
-For the Suricata alerts, execute
+For the Suricata alerts (line 14-33), execute
 
 ```sh
 find dataset -name 'syslog_??.jsonl' -exec python3 count_tps_suricata.py {} \;
@@ -115,7 +115,7 @@ Let us know if you are using a different OS or Python version, we will gladly re
 
 We also included the Sigma rules used for the Evaluation in the `rules` directory.
 These rules were downloaded from the [official Sigma repository](https://github.com/SigmaHQ/sigma).
-Use the following command to create Sigma alerts from the Windows Event log file:
+Use the following command to create Sigma alerts from the Windows Event log file (can take several minutes):
 
 ```
 ./check_sigma.pex winlogbeat_1.jsonl rules/ > sigma_1.jsonl
@@ -137,4 +137,4 @@ Our full evaluation differs from this description in the following aspects:
 1. We repeated the iterations with a changed Windows logging configuration. To do so, open `provisioning/ansible/client10_playbook.yml` and remove the roles `win10_logging_config` and `win10_sysmon`. This will change from the "best practice" to the "default" logging configuration. Then delete the client VM from VirtualBox and rebuild it using the script `tools/build_client`.
 1. We repeated the whole process (i.e., ten iterations per configuration) on another host.
 
-Following these steps and then performing the calculations described in the section "Recalculating the presented results from our dataset" reproduces our complete evaluation.
+After each simulation, move the created log files to the corresponding directory (`new_dataset/host1_bestpractice/`, `new_dataset/host1_default/`, `new_dataset/host2_bestpractice/` and `new_dataset/host2_default/`). Following these steps and then performing the calculations described in the section "Recalculating the presented results from our dataset" using the new dataset reproduces our complete evaluation.

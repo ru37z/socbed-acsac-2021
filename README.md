@@ -46,7 +46,7 @@ source ~/.virtualenvs/socbed/bin/activate
 
 # Download and install SOCBED in the virtual environment
 git clone https://github.com/ru37z/socbed-acsac-2021.git
-cd socbed/
+cd socbed-acsac-2021/
 pip install -r requirements.txt
 pip install --editable .
 ```
