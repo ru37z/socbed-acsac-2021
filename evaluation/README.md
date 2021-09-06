@@ -55,7 +55,7 @@ To recalculate the number of Sigma alerts (line 8-12) execute the following comm
 find dataset -name 'sigma_??.jsonl' -exec python3 count_tps_sigma.py {} \;
 ```
 
-For the Suricata alerts, execute
+For the Suricata alerts (line 14-33), execute
 
 ```sh
 find dataset -name 'syslog_??.jsonl' -exec python3 count_tps_suricata.py {} \;
@@ -115,7 +115,7 @@ Let us know if you are using a different OS or Python version, we will gladly re
 
 We also included the Sigma rules used for the Evaluation in the `rules` directory.
 These rules were downloaded from the [official Sigma repository](https://github.com/SigmaHQ/sigma).
-Use the following command to create Sigma alerts from the Windows Event log file:
+Use the following command to create Sigma alerts from the Windows Event log file (can take several minutes):
 
 ```
 ./check_sigma.pex winlogbeat_1.jsonl rules/ > sigma_1.jsonl
