@@ -65,3 +65,6 @@ generate_malware/
 
 # ISO files
 *.iso
+
+# Unzipped datasets
+dataset/
