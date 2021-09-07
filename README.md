@@ -64,7 +64,7 @@ Next, build all SOCBED virtual machines via ansible and packer while within the 
     ```sh
     md5sum ./provisioning/packer/Win10.iso
     ```
-- update the checksum value in `provisioning/packer/client.json`(line 118) with the newly calculated value
+- update the checksum value in `provisioning/packer/client.json` (line 118) with the newly calculated value
 
 The script below will execute everything required to build and configure each respective machine, including snapshotting.
 It will download the necessary ISO files, automatically boot the OS and provision the necessary versions of software dependencies with no human interaction needed.
