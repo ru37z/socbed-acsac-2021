@@ -67,4 +67,4 @@ provisioning/ansible/roles/generate_malware/files/
 *.iso
 
 # Unzipped datasets
-dataset/
+evaluation/dataset/
