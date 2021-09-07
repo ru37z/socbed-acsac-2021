@@ -35,7 +35,7 @@ Similar operating systems should work as well but were not tested.
 When running on a system with 16 GB RAM, all other applications should be closed.
 We experienced some minor VirtualBox bugs on macOS and therefore recommend using Ubuntu.
 
-## 1) Recalculating the presented results from our dataset
+## 1. Recalculating the presented results from our dataset
 
 Our main results are presented in Table 2 (page 8) and Figure 5 (page 9) of the paper.
 They are based on the measurements contained in `dataset.zip`.
@@ -78,7 +78,7 @@ deactivate
 
 The results are shown in Events.pdf.
 
-## 2) Reproducing one type of simulation
+## 2. Reproducing one type of simulation
 
 For our evaluation, we built and run SOCBED on two separate host systems with two different logging configurations (default and best-practice), respectively.
 As a first step, this section describes how to build and run SOCBED on one host with the best-practice configuration.
@@ -128,7 +128,7 @@ python3 count_tps_sigma.py sigma_1.jsonl
 python3 count_tps_suricata.py syslog_1.jsonl
 ```
 
-## 3) Reproducing the full evaluation
+## 3. Reproducing the full evaluation
 
 The previous section described how to perform one iteration of the simulation on one host.
 Our full evaluation differs from this description in the following aspects:
