@@ -89,9 +89,9 @@ The setup process is described in the file `README.md` in the repository root.
 Please build SOCBED by closely following these instructions and run the tests as described to verify correct functionality.
 Please note that SOCBED used to be called "BREACH" and the old name is not yet fully replaced in the code.
 
-Attention: SOCBED requires a Windows 10 ISO image, as described in the readme file.
+Attention: SOCBED requires a Windows 10 ISO image, as described in the aforementioned readme file.
 For the evaluation, we used Windows 10 Pro version 2004 (Build 19041).
-We did not test later versions and therefore recommend to use exactly this version.
+We did not test other versions and therefore recommend to use exactly this version.
 You can use the following image, which we uploaded to Google Drive: https://drive.google.com/file/d/1IoSszrbUf3b3od3rtba_fpoE5iZQKYkP/view?usp=sharing.
 
 ### Running an iteration of our simulation
