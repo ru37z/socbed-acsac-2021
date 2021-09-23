@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Internet Router
         run: ./tools/build_internetrouter
+      - name: Build Company Router
+        run: ./tools/build_companyrouter
    
   delete-machines:
     runs-on: [self-hosted, linux]
