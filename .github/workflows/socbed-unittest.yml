@@ -1,6 +1,8 @@
 name: SOCBED Unit Tests
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs: 
   tox-unit-test:
