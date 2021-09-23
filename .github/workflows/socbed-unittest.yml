@@ -6,7 +6,6 @@ jobs:
   tox-unit-test:
     runs-on: [self-hosted, linux]
     steps:
-      - name: Run tox unittests (aka "not systest")
         uses: actions/checkout@v2
       - run: tox -- -m "not systest"
 
