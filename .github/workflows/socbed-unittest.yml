@@ -1,0 +1,11 @@
+name: SOCBED Unit Tests
+
+on: [push]
+
+jobs: 
+  tox-unit-test:
+    runs-on: [self-hosted, linux]
+    steps:
+      - name: Run tox unittests (aka "not systest")
+      - run: tox -- -m "not systest"
+
