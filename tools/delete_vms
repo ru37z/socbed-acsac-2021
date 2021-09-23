@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+./tools/cleanup_failed_session  > /dev/null 2>&1
+
 VM_NAMES=(
 	"Internet Router"
 	"Company Router"
