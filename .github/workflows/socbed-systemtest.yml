@@ -51,7 +51,11 @@ jobs:
         run: ./tools/cleanup_failed_session
       
       - name: Run system tests ("not longtest")
-        run: tox -- -m "systest and not longtest"
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 30
+          max_attempts: 3
+          command: tox -- -m "systest and not longtest"
    
   delete-machines:
     runs-on: [self-hosted, linux]
