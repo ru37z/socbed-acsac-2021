@@ -22,11 +22,41 @@ jobs:
       
       - name: Build Company Router
         run: ./tools/build_companyrouter
+        
+      - name: Build Attacker
+        run: ./tools/build_attacker
+        
+      - name: Build Log Server
+        run: ./tools/build_logserver
+        
+      - name: Build Internal Server
+        run: ./tools/build_internalserver
+        
+      - name: Build DMZ Server
+        run: ./tools/build_dmzserver
+        
+      - name: Build Client
+        run: ./tools/build_client
+        
+      - name: Run loggins setup
+        run: ./tools/logging_setup
+        
+  test-machines:
+    runs-on: [self-hosted, linux]
+    needs: [build-machines]
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Ensure all machines are powered off
+        run: ./tools/cleanup_failed_session
+      
+      - name: Run system tests ("not longtest")
+        run: tox -- -m "systest and not longtest"
    
   delete-machines:
     runs-on: [self-hosted, linux]
     if: always()
-    needs: [build-machines]
+    needs: [build-machines, test-machines]
     steps:
       - uses: actions/checkout@v2
       
