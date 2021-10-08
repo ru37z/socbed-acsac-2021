@@ -14,7 +14,7 @@ jobs:
       - name: Define iso cache
         uses: MasterworksIO/action-local-cache@main
         with:
-          path: ["./provisioning/packer/packer_cache/", "./provisioning/packer/exports/", "./provisioning/packer/packer_builds/"]
+          path: "./provisioning/packer/"
           key: "cache"
       
       - name: Build Internet Router
@@ -33,7 +33,7 @@ jobs:
       - name: Define iso cache
         uses: MasterworksIO/action-local-cache@main
         with:
-          path: ["./provisioning/packer/packer_cache/", "./provisioning/packer/exports/", "./provisioning/packer/packer_builds/"]
+          path: "./provisioning/packer/"
           key: "cache"
       
       - name: Delete created VMs
