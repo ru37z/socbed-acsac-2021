@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Define iso cache
+      - name: Set up iso cache
         uses: MasterworksIO/action-local-cache@main
         with:
           path: "./provisioning/packer/packer_cache/"
