@@ -38,9 +38,9 @@
       "guest_os_type": "Debian_64",
       "headless": "true",
       "http_directory": "http",
-      "iso_checksum": "sha256:265812bc13ab11d40c610424871bdf9198b9e7cad99b06540d96fac67dd704de",
+      "iso_checksum": "sha1:367786518f0478e5c33ef44f423d0f0230f4057c",
       "iso_urls": [
-        "http://old.kali.org/kali-images/kali-2021.1/kali-linux-2021.1-installer-amd64.iso"
+        "https://cdimage.kali.org/kali-2021.1/kali-linux-2021.1-installer-amd64.iso"
       ],
       "keep_registered": "true",
       "memory": "1024",
