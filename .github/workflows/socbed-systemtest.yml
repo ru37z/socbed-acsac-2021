@@ -10,6 +10,78 @@ jobs:
     runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Set up iso cache
+        uses: MasterworksIO/action-local-cache@main
+        with:
+          path: "./provisioning/packer/packer_cache/"
+          key: "iso_cache"
+          
+      - name: Set up packer exports cache (OVA/VDI)
+        uses: MasterworksIO/action-local-cache@main
+        with:
+          path: "./provisioning/packer/exports/"
+          key: "export_cache"
+      
       - name: Build Internet Router
         run: ./tools/build_internetrouter
+      
+      - name: Build Company Router
+        run: ./tools/build_companyrouter
+        
+      - name: Build Attacker
+        run: ./tools/build_attacker
+        
+      - name: Build Log Server
+        run: ./tools/build_logserver
+        
+      - name: Build Internal Server
+        run: ./tools/build_internalserver
+        
+      - name: Build DMZ Server
+        run: ./tools/build_dmzserver
+        
+      - name: Build Client
+        run: ./tools/build_client
+        
+      - name: Run logging setup
+        run: ./tools/logging_setup
+        
+  test-machines:
+    runs-on: [self-hosted, linux]
+    needs: [build-machines]
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up packer exports cache (OVA/VDI)
+        uses: MasterworksIO/action-local-cache@main
+        with:
+          path: "./provisioning/packer/exports/"
+          key: "export_cache"
+      
+      - name: Ensure all machines are powered off
+        run: ./tools/cleanup_failed_session
+      
+      - name: Run system tests ("not longtest")
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 30
+          max_attempts: 3
+          command: tox -- -m "systest and not longtest"
+   
+  delete-machines:
+    runs-on: [self-hosted, linux]
+    if: always()
+    needs: [build-machines, test-machines]
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up packer exports cache (OVA/VDI)
+        uses: MasterworksIO/action-local-cache@main
+        with:
+          path: "./provisioning/packer/exports/"
+          key: "export_cache"
+      
+      - name: Delete created VMs
+        run: ./tools/delete_vms
 

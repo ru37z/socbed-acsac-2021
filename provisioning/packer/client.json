@@ -116,7 +116,7 @@
   "variables": {
     "floppy_files_path": "./floppy_files/",
     "iso_checksum": "e47890d75a6e18211f6790d9d4864a17",
-    "iso_url": "Win10.iso",
+    "iso_url": "/usr/share/runner-dependencies/Win10.iso",
     "vm_description": "BREACH: Client",
     "vm_version": "fresh"
   }
