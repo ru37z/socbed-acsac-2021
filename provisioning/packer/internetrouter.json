@@ -4,7 +4,8 @@
     "host_ip_addr": "127.0.0.1",
     "ssh_host_addr": "192.168.56.30",
     "vm_description": "BREACH: Internet Router",
-    "vm_version": "fresh"
+    "vm_version": "fresh",
+    "vm_output": "./exports/InternetRouter"
   },
   "builders": [
     {
@@ -106,7 +107,7 @@
         "--version",
         "fresh"
       ],
-      "output_directory": "./exports/internetrouter",
+      "output_directory": "{{user `vm_output`}}",
       "keep_registered": "true",
       "skip_export": "true",
       

@@ -6,7 +6,12 @@ printf "Starting Internet Router build. Please allow up to 20 minutes.\n"
 export ANSIBLE_HOST_KEY_CHECKING=False
 cd ./provisioning/packer/
 
+if [ -n "$1" ] && [ $1 == "runner" ]; then
+export PACKER_CACHE_DIR=/usr/share/runner-dependencies
+packer build -force -var 'my_output=/usr/share/runner-dependencies/internetrouter' internetrouter.json
+else
 packer build -force internetrouter.json
+fi
 
 if [ $? != 0 ]; then
 	printf "Packer exited with non-zero return code.\nResetting all previously built machines to their old snapshots...\n"
@@ -16,4 +21,5 @@ fi
 
 cd ../..
 ./tools/cleanup_failed_session  > /dev/null 2>&1
+unset PACKER_CACHE_DIR
 printf "Task finished.\n\n"

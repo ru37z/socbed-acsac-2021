@@ -4,7 +4,8 @@
     "host_ip_addr": "127.0.0.1",
     "ssh_host_addr": "192.168.56.10",
     "vm_description": "BREACH: Company Router",
-    "vm_version": "fresh"
+    "vm_version": "fresh",
+    "vm_output": "./exports/companyrouter"
   },
   "builders": [
     {
@@ -125,7 +126,7 @@
         "--version",
         "fresh"
       ],
-      "output_directory": "./exports/CompanyRouter",
+      "output_directory": "{{user `vm_output`}}",
       "keep_registered": "true",
       "skip_export": "true",
       "shutdown_command": "echo 'packer' | shutdown -h -P now",

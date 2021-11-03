@@ -11,53 +11,67 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Set up iso cache
-        uses: MasterworksIO/action-local-cache@main
-        with:
-          path: "./provisioning/packer/packer_cache/"
-          key: "iso_cache"
-          
-      - name: Set up packer exports cache (OVA/VDI)
-        uses: MasterworksIO/action-local-cache@main
-        with:
-          path: "./provisioning/packer/exports/"
-          key: "export_cache"
-      
       - name: Build Internet Router
-        run: ./tools/build_internetrouter
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          command: ./tools/build_internetrouter runner
       
       - name: Build Company Router
-        run: ./tools/build_companyrouter
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          command: ./tools/build_companyrouter runner
         
       - name: Build Attacker
-        run: ./tools/build_attacker
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 120
+          max_attempts: 3
+          command: ./tools/build_attacker runner
         
       - name: Build Log Server
-        run: ./tools/build_logserver
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          command: ./tools/build_logserver runner
         
       - name: Build Internal Server
-        run: ./tools/build_internalserver
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          command: ./tools/build_internalserver runner
         
       - name: Build DMZ Server
-        run: ./tools/build_dmzserver
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          command: ./tools/build_dmzserver runner
         
       - name: Build Client
-        run: ./tools/build_client
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 120
+          max_attempts: 3
+          command: ./tools/build_client runner
         
       - name: Run logging setup
-        run: ./tools/logging_setup
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 60
+          max_attempts: 3
+          command: ./tools/logging_setup
         
   test-machines:
     runs-on: [self-hosted, linux]
     needs: [build-machines]
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Set up packer exports cache (OVA/VDI)
-        uses: MasterworksIO/action-local-cache@main
-        with:
-          path: "./provisioning/packer/exports/"
-          key: "export_cache"
       
       - name: Ensure all machines are powered off
         run: ./tools/cleanup_failed_session
@@ -75,12 +89,6 @@ jobs:
     needs: [build-machines, test-machines]
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Set up packer exports cache (OVA/VDI)
-        uses: MasterworksIO/action-local-cache@main
-        with:
-          path: "./provisioning/packer/exports/"
-          key: "export_cache"
       
       - name: Delete created VMs
         run: ./tools/delete_vms
