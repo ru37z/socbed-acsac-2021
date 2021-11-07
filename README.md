@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/Maspital/socbed-acsac-2021?label=System%20Tests&style=plastic)
+
 # SOCBED
 
 SOCBED is a self-contained open-source cyberattack experimentation testbed that simulates a small company's network including benign user behavior, various cyber attacks, and a central collection of log data.
