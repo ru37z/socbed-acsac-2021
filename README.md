@@ -1,4 +1,4 @@
-![GitHub](https://img.shields.io/github/license/Maspital/socbed-acsac-2021?label=System%20Tests&style=plastic)
+[![socbed build status](https://github.com/Maspital/socbed-acsac-2021/blob/main/.github/workflows/socbed-systemtest.yml/badge.svg?branch=master)](https://github.com/Maspital/socbed-acsac-2021/actions?query=branch%3Amaster)
 
 # SOCBED
 
