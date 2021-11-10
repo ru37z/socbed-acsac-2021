@@ -6,10 +6,27 @@ on:
   workflow_dispatch:
   
 jobs:
+  prepare-environment:
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Create virtual environment
+        run: python3 -m venv /usr/share/runner-dependencies/socbed_env
+        
+      - name: Activate virtual environment
+        run: source /usr/share/runner-dependencies/socbed_env/bin/activate
+        
+      - name: Install requirements in virtual environment
+        run: pip3 install -r requirements.txt
+  
   build-machines:
     runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Activate virtual environment
+        run: source /usr/share/runner-dependencies/socbed_env/bin/activate
       
       - name: Build Internet Router
         uses: nick-invision/retry@v2
@@ -73,6 +90,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Activate virtual environment
+        run: source /usr/share/runner-dependencies/socbed_env/bin/activate
+      
       - name: Ensure all machines are powered off
         run: ./tools/cleanup_failed_session
       
@@ -92,4 +112,7 @@ jobs:
       
       - name: Delete created VMs
         run: ./tools/delete_vms
+        
+      - name: Delete virtual environment
+        run: rm -r /usr/share/runner-dependencies/socbed_env
 
