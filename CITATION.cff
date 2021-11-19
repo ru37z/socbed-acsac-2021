@@ -23,7 +23,8 @@ preferred-citation:
   title: "Reproducible and Adaptable Log Data Generation for Sound Cybersecurity Experiments"
   collection-title: "Annual Computer Security Applications Conference"
   issue-title: "ACSAC '20"
-  volume-title: "Test"
+  volume-title: "Test 1"
+  number: "Test 2"
   year: 2021
   publisher:
     name: "Association for Computing Machinery"
