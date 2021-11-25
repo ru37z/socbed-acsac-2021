@@ -1,8 +1,8 @@
-# Reproducing our Experiments
+# Reproducing our SOCBED Evaluation
 
 ## Overview
 
-In our paper, we present SOCBED, which is an open-source testbed for reproducible log data generation.
+In our paper "Reproducible and Adaptable Log Data Generation for Sound Cybersecurity Experiments", we present [SOCBED](https://github.com/fkie-cad/socbed), which is an open-source testbed for reproducible log data generation.
 The testbed is based on seven virtual machines (VMs) that can be automatically built by provisioning scripts.
 In our evaluation, we performed ten iterations of a SOCBED simulation on two different host systems and with two different logging configurations, respectively, resulting in a total of 40 iterations.
 
@@ -25,7 +25,7 @@ In the following, we state system requirements and describe how to perform the t
 
 Reproducing the full evaluation requires two systems as follows (for level one and two, one system suffices):
 
-* Physical host running Ubuntu 20.04 (recommended) or macOS 10.15
+* Physical host running Linux or macOS
 * 16 GB RAM (32 GB recommended)
 * SSD with 50 GB free space
 * Direct Internet connection
@@ -85,14 +85,9 @@ As a first step, this section describes how to build and run SOCBED on one host 
 
 ### Building SOCBED
 
-The setup process is described in the file `README.md` in the repository root.
+The setup process is described in the file `README.md` of the SOCBED repository.
 Please build SOCBED by closely following these instructions and run the tests as described to verify correct functionality.
 Please note that SOCBED used to be called "BREACH" and the old name is not yet fully replaced in the code.
-
-Attention: SOCBED requires a Windows 10 ISO image, as described in the aforementioned readme file.
-For the evaluation, we used Windows 10 Pro version 2004 (Build 19041).
-We did not test other versions and therefore recommend to use exactly this version.
-You can use the following image, which we uploaded to Google Drive: https://drive.google.com/file/d/1IoSszrbUf3b3od3rtba_fpoE5iZQKYkP/view?usp=sharing.
 
 ### Running an iteration of our simulation
 
@@ -100,7 +95,7 @@ After installing SOCBED successfully, you can run an iteration of our simulation
 (In case you are running macOS as a host system, you first need to replace line 6 with line 7 in the `run_simulations` script.)
 
 ```sh
-cd evaluation
+# Execute in repo root of socbed-acsac-2021
 source ~/.virtualenvs/socbed/bin/activate
 pip install elasticsearch elasticsearch-dsl
 ./run_simulations
@@ -111,10 +106,11 @@ During the simulation and at the end, several log files will be created (in the 
 
 To match Sigma rules against the created Windows Event logs, we used our open-source tool [Logprep](https://github.com/fkie-cad/Logprep), which is included here as a Python EXecutable (PEX) file called `check_sigma.pex`.
 Please note that this file requires Linux and Python 3.8 (default in Ubuntu 20.04) to run.
-Let us know if you are using a different OS or Python version, we will gladly recompile the file for you.
+Let us know if you are using a different OS or Python version, we can recompile the file for you.
 
 We also included the Sigma rules used for the Evaluation in the `rules` directory.
 These rules were downloaded from the [official Sigma repository](https://github.com/SigmaHQ/sigma).
+Please note that the [Detection Rule License](https://github.com/SigmaHQ/sigma/blob/master/LICENSE.Detection.Rules.md) applies.
 Use the following command to create Sigma alerts from the Windows Event log file (can take several minutes):
 
 ```
