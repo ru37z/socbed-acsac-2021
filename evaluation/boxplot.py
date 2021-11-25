@@ -67,7 +67,7 @@ def main():
     hues = pandas.Series(len(values_dell) * ['Host 1'] + len(values_mac) * ['Host 2'])
     df_dell = pandas.concat([values, labels, hues], keys=['values', 'labels', 'host'])
 
-    plot.figure(num=1, figsize=(5.9, 3))
+    plot.figure(num=1, figsize=(5.9, 3.7))
 
     seaborn.set_theme(style="whitegrid")
     seaborn.boxplot(data=df_dell, x='labels', y='values', hue='host', palette=['#b2abd2', '#fdb863'])
