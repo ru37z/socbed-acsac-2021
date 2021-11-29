@@ -1,4 +1,0 @@
-- name: Restart auditbeat
-  service:
-    name: auditbeat
-    state: restarted

@@ -1,2 +1,0 @@
-- name: Add exclusion folder to Windows Defender
-  win_shell: Add-MpPreference -ExclusionPath “C:\”,“Y:\”

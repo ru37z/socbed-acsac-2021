@@ -1,4 +1,0 @@
-- name: Replace old hosts
-  copy:
-    src: files/hosts
-    dest: /var/ipfire/main/hosts

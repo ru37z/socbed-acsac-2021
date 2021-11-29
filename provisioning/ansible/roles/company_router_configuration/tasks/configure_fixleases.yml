@@ -1,5 +1,0 @@
-- name: Replace old fixleases in /var/ipfire
-  copy:
-    src: files/fixleases
-    dest: /var/ipfire/dhcp/fixleases
-

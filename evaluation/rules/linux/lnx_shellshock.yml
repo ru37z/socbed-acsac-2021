@@ -1,9 +1,0 @@
-filter: 'message: "/\(\)\s*\t*\{.*;\s*\}\s*;/"'
-pre_detector:
-  case_condition: directly
-  id: c67e0c98-4d39-46ee-8f6b-437ebf6b950e
-  mitre: []
-  severity: high
-  title: Shellshock Expression
-sigma_fields: true
-description: Detects shellshock expressions in log files

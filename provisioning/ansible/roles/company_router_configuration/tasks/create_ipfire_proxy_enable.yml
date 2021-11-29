@@ -1,4 +1,0 @@
-- name: create /var/ipfire/proxy/enable
-  file:
-    path: /var/ipfire/proxy/enable
-    state: touch

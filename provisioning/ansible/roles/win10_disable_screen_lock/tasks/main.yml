@@ -1,2 +1,0 @@
-- name: Set "Turn off display" to never
-  win_command: "powercfg /change monitor-timeout-ac 0"

@@ -1,4 +1,0 @@
-- name: Create proxy viewersettings
-  copy:
-    src: files/proxy_viewersettings
-    dest: /var/ipfire/proxy/viewersettings

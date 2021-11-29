@@ -1,4 +1,0 @@
-- name: Replace old proxy settings in /var/ipfire
-  copy:
-    src: files/proxy_settings
-    dest: /var/ipfire/proxy/settings

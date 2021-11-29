@@ -1,3 +1,0 @@
-- name: Change computer name to CLIENT
-  win_hostname:
-    name: CLIENT

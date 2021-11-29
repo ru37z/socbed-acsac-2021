@@ -1,4 +1,0 @@
----
-- include: add_auditbeat_apt_repository.yml
-- include: install_auditbeat.yml
-- include: configure_auditbeat.yml

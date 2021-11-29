@@ -1,7 +1,0 @@
----
-- hosts: companyrouter
-  become: yes
-  gather_facts: true
-
-  roles:
-    - packetbeat

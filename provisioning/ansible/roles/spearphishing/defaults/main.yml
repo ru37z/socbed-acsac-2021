@@ -1,3 +1,0 @@
----
-vhost_path: "/var/www/vhost.com/"
-bank_archive: "{{ role_path }}/files/bank.tar.gz"
